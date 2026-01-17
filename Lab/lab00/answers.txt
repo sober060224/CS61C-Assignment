@@ -1,10 +1,10 @@
-1.mv
-2.chmod
-3.pwd
-4.ping
-
-1.grep -r
-2.ps aux
-3.kill
-4.diff
+ls -l
+mv
+chmod
+pwd
+ping
+grep -r
+ps aux
+kill
+diff
 
