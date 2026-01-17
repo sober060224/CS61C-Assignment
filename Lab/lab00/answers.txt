@@ -1,7 +1,5 @@
-1.sdfasdf
-2.sdafsad
-3.sadf
-4.sadf
-sadfsad
-sdafsa
-sadfsd
+1.grep -r
+2.ps aux
+3.kill
+4.diff
+
