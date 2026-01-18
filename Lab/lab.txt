@@ -1,0 +1,2565 @@
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab02
+lab 2
+Setup  设置
+To get the starter files for this lab, run the following command in your labs directory.
+要获取本实验的初始文件，请在您的 labs 目录中运行以下命令。
+
+If you get an error like the following:
+如果您遇到如下错误：
+
+fatal: 'starter' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+
+make sure to set the starter remote as follows:
+请确保按照以下方式设置初始远程仓库：
+
+git remote add starter https://github.com/61c-teach/fa20-lab-starter.git
+
+
+and run the original command again.
+然后再次运行原始命令。
+
+Objectives  目标
+TSWBAT (“The Student Will Be Able To”) perform specific bit manipulations through compositions of bit operations.
+TSWBAT（“学生将能够”）通过组合位操作执行特定的位操作。
+TSWBAT identify potential issues with dynamic memory management.
+TSWBAT 识别动态内存管理的潜在问题。
+Exercise 0: Makefiles  练习 0：Makefiles
+As you saw in Lab 1, compiling C programs in the terminal is a tedious and time-consuming operation that requires the running of multiple commands with long series of arguments. While this is doable for simple C programs, for larger and more complex programs with often dozens of files and dependencies, this gets rather unwieldy quickly.
+在 Lab 1 中，你看到了在终端编译 C 程序是一项繁琐且耗时的工作，需要运行多个带有长串参数的命令。虽然这对于简单的 C 程序来说是可行的，但对于包含几十个文件和依赖的大型复杂程序，这种方法很快就会变得难以管理。
+
+For large, complex, programs, most C programmers write what’s called a “makefile” to help with compilation. A makefile is a text file (literally labelled “Makefile”) in the code directory that contains a set of rules, each of which has commands that compile the C program for them. Each makefile can contain multiple rules that each compile one or more targets (e.g. an executable) or do a different objective. To compile a target, the programmer just needs to type “make " into their command terminal.
+对于大型复杂程序，大多数 C 程序员会编写一个称为“makefile”的文件来帮助编译。makefile 是代码目录中的一个文本文件（字面意思是“Makefile”），其中包含一组规则，每个规则都有编译 C 程序的命令。每个 makefile 可以包含多个规则，每个规则编译一个或多个目标（例如可执行文件）或实现不同的目标。要编译一个目标，程序员只需在命令终端中输入“make”。
+
+Take a look at the “Makefile” included with this lab, and try to answer the following questions in “make.txt”. Feel free to use the internet to figure some of these questions out.
+查看本实验附带的“Makefile”，并在“make.txt”中尝试回答以下问题。你可以自由使用互联网来查找这些问题的答案。
+
+Which target is part of a rule that deletes all the compiled programs?
+哪个目标属于一个删除所有编译程序的规则？
+Which target is part of a rule that makes all the compiled programs?
+哪个目标属于一个使所有编译程序生效的规则？
+Which compiler is currently being used?
+目前使用的是哪个编译器？
+What C standard are we currently using?
+我们目前使用的是哪个 C 标准？
+How would we reference a variable “FOO” in a makefile?
+在 makefile 中如何引用变量“FOO”？
+What operating system does the term “Darwin” represent?
+“Darwin”这个术语代表哪个操作系统？
+What line creates the lfsr program from its object files? (Give its line number.)
+哪一行代码从其对象文件创建 lfsr 程序？（请给出行号。）
+Makefiles look daunting, but are actually an amazing tool that help save a lot of time!
+Makefiles 看起来令人生畏，但实际上是一个能节省大量时间的强大工具！
+
+Exercise 1: Bit Operations
+练习 1：位操作
+For this exercise, you will complete bit_ops.c by implementing the bit manipulation functions get_bit, set_bit, and flip_bit (shown below). You may ONLY use bitwise operations such as and (&), or (|), xor (^), not (~), left shifts («), and right shifts (»). You may not use any for/while loops or conditional statements. You also may not use modulo (%), division, addition subtraction, or multiplication for this question.
+在这个练习中，你需要通过实现下面的 get_bit 、 set_bit 和 flip_bit 位操作函数来完成 bit_ops.c 。你可以仅使用与 (&)、或 (|)、异或 (^)、非 (~)、左移 («) 和右移 (») 这类位运算。你不可以使用任何 for/while 循环或条件语句。对于这个问题，你也不可以使用取模 (%)、除法、加法、减法或乘法。
+
+// Return the nth bit of x.
+// Assume 0 <= n <= 31
+unsigned get_bit(unsigned x, unsigned n);
+
+// Set the nth bit of the value of x to v.
+// Assume 0 <= n <= 31, and v is 0 or 1
+void set_bit(unsigned *x, unsigned n, unsigned v);
+
+// Flip the nth bit of the value of x.
+// Assume 0 <= n <= 31
+void flip_bit(unsigned *x, unsigned n);
+
+
+ACTION ITEM: Finish implementing get_bit, set_bit, and flip_bit.
+行动项：完成 get_bit 、 set_bit 和 flip_bit 的实现。
+
+Once you complete these functions, you can compile and run your code using the following commands:
+一旦你完成了这些函数，你可以使用以下命令来编译和运行你的代码：
+
+$ make bit_ops
+$ ./bit_ops
+
+
+This will print out the result of a few limited tests.
+这将打印出一些有限测试的结果。
+
+Exercise 2: Linear Feedback Shift Register
+练习 2：线性反馈移位寄存器
+In this exercise, you will implement a lfsr_calculate() function to compute the next iteration of a linear feedback shift register (LFSR). Applications that use LFSRs are: Digital TV, CDMA cellphones, Ethernet, USB 3.0, and more! This function will generate pseudo-random numbers using bitwise operators. For some more background, read the Wikipedia article on Linear feedback shift registers. In lfsr.c, fill in the function lfsr_calculate() so that it does the following:
+在这个练习中，你将实现一个 lfsr_calculate() 函数来计算线性反馈移位寄存器（LFSR）的下一个迭代。使用 LFSR 的应用包括：数字电视、CDMA 手机、以太网、USB 3.0 等！这个函数将使用位运算符生成伪随机数。了解更多背景知识，请阅读关于线性反馈移位寄存器的维基百科文章。在 lfsr.c ，填写函数 lfsr_calculate() 以实现以下功能：
+
+Hardware Diagram  硬件图
+LFSR Diagram
+
+Explanation  解释
+On each call to lfsr_calculate, you will shift the contents of the register 1 bit to the right.
+每次调用 lfsr_calculate 时，寄存器的内容将向右移动 1 位。
+This shift is neither a logical shift or an arithmetic shift. On the left side, you will shift in a single bit equal to the Exclusive Or (XOR) of the bits originally in position 0, 2, 3, and 5.
+这种移位既不是逻辑移位也不是算术移位。在左侧，将移入一个等于位 0、位 2、位 3 和位 5 原来位置的位进行异或（XOR）运算的位。
+The curved head-light shaped object is an XOR, which takes two inputs (a, b) and outputs a^b.
+那个弯曲的像车灯形状的物体是一个异或（XOR），它接受两个输入（a，b）并输出 a^b。
+If you implemented lfsr_calculate() correctly, it should output all 65535 positive 16-bit integers before cycling back to the starting number.
+如果你正确实现了 lfsr_calculate() ，它应该输出所有 65535 个正 16 位整数，然后循环回到起始数字。
+Note that the leftmost bit is the MSB and the rightmost bit is the LSB.
+请注意，最左边的位是最高有效位（MSB），最右边的位是最低有效位（LSB）。
+ACTION ITEM: Implement lfsr_calculate(), compile lfsr and run it. Verify that the output looks like the following:
+行动项：实现 lfsr_calculate() ，编译 lfsr 并运行它。验证输出看起来如下：
+
+$ make lfsr
+$ ./lfsr
+My number is: 1
+My number is: 5185
+My number is: 38801
+My number is: 52819
+My number is: 21116
+My number is: 54726
+My number is: 26552
+My number is: 46916
+My number is: 41728
+My number is: 26004
+My number is: 62850
+My number is: 40625
+My number is: 647
+My number is: 12837
+My number is: 7043
+My number is: 26003
+My number is: 35845
+My number is: 61398
+My number is: 42863
+My number is: 57133
+My number is: 59156
+My number is: 13312
+My number is: 16285
+ ... etc etc ...
+Got 65535 numbers before cycling!
+Congratulations! It works!
+
+
+Exercise 3: Memory Management
+练习 3：内存管理
+This exercise uses vector.h, vector-test.c, and vector.c, where we provide you with a framework for implementing a variable-length array. This exercise is designed to help familiarize you with C structs and memory management in C.
+这个练习使用 vector.h 、 vector-test.c 和 vector.c ，我们为你提供了一个实现可变长数组的框架。这个练习旨在帮助你熟悉 C 结构体和 C 中的内存管理。
+
+ACTION ITEM: Explain why bad_vector_new() and also_bad_vector_new() are bad and fill in the functions vector_new(), vector_get(), vector_delete(), and vector_set() in vector.c (as well as the function headers in vector.h) so that our test code vector-test.c runs without any memory management errors. Also, implement a rule for the vector-test target in the makefile.
+行动项：解释为什么 bad_vector_new() 和 also_bad_vector_new() 是错误的，并在 vector.c 中填写函数 vector_new() 、 vector_get() 、 vector_delete() 和 vector_set() （以及 vector.h 中的函数头），以便我们的测试代码 vector-test.c 在没有任何内存管理错误的情况下运行。此外，在 makefile 中为 vector-test 目标实现一个规则。
+
+Comments in the code describe how the functions should work. Look at the functions we’ve filled in to see how the data structures should be used. For consistency, it is assumed that all entries in the vector are 0 unless set by the user. Keep this in mind as malloc() does not zero out the memory it allocates.
+代码中的注释描述了函数应该如何工作。查看我们已填写的函数，看看如何使用这些数据结构。为了保持一致性，假设向量中的所有条目都是 0，除非由用户设置。记住这一点，因为 malloc() 不会清零它分配的内存。
+
+For explaining why the two bad functions are incorrect, keep in mind that one of these functions will actually run correctly (assuming correctly modified vector_new, vector_set, etc.) but there may be other problems. Hint: think about memory usage.
+
+ACTION ITEM: Test your implementation of vector_new(), vector_get(), vector_delete(), and vector_set() for both correctness and memory management (details below).
+
+# 1) to check correctness
+$ make vector-test
+$ ./vector-test
+
+# 2) to check memory management using Valgrind:
+$ make vector-memcheck
+
+
+All the vector-memcheck rule does is run the following valgrind command on our executable. For a review, read through Exercise 4 in Lab 1. Explain to yourself what each of the flags mean.
+
+$ valgrind --tool=memcheck --leak-check=full --track-origins=yes [OS SPECIFIC ARGS] ./<executable>
+
+
+The last line in the valgrind output is the line that will indicate at a glance if things have gone wrong. Here’s a sample output from a buggy program:
+
+==47132== ERROR SUMMARY: 1200039 errors from 24 contexts (suppressed: 18 from 18)
+
+
+If your program has errors, you can scroll up in the command line output to view details for each one. For our purposes, you can safely ignore all output that refers to suppressed errors. In a leak-free program, your output will look like this:
+
+==44144== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 18 from 18)
+
+
+Again, any number of suppressed errors is fine; they do not affect us.
+
+Feel free to also use CGDB or add printf statements to vector.c and vector-test.c to debug your code.
+
+Checkoff
+Please submit to the Lab Autograder assignment (same as last week!).
+
+Checkoff questions for Exercise 3:
+
+Explain to your TA/AI why bad_vector_new() and also_bad_vector_new() are bad. Also, show your TA/AI the output of make vector-memcheck.
+Previous
+Lab01
+Next
+Lab03
+Setup  设置
+Objectives  目标
+Exercise 0: Makefiles  练习 0：Makefiles
+Exercise 1: Bit Operations
+练习 1：位操作
+Exercise 2: Linear Feedback Shift Register
+练习 2：线性反馈移位寄存器
+Hardware Diagram  硬件图
+Explanation  解释
+Exercise 3: Memory Management
+练习 3：内存管理
+Checkoff  检查点
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab03
+Lab 3
+Before you begin  
+This lab is somewhat longer than the previous labs (and longer than most future labs as well). This is in order to give everyone a chance to get comfortable with writing RISC-V and using the Venus simulator before the release of project 2, which will require you to write a fair amount of assembly.  
+
+To this end, we recommend that you watch this week’s lectures and get started on this assignment as early as possible. Good luck! If you have any questions or run into any issues, then please feel free to ask in office hours or on Piazza.  
+
+Goals  
+Practice running and debugging RISC-V assembly code.  
+Write RISC-V functions with the correct function calling procedure.  
+Get an idea of how to translate C code to RISC-V.  
+Get familiar with using the Venus simulator  
+Getting the files  
+To get the starter files for this lab, run the following command in your labs directory.
+要获取本实验的初始文件，请在您的 labs 目录中运行以下命令。
+
+$ git pull starter master
+
+
+If you get an error like the following:
+如果您遇到如下错误：
+
+fatal: 'starter' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+
+make sure to set the starter remote as follows:
+请确保按照以下方式设置初始远程仓库：
+
+git remote add starter https://github.com/61c-teach/fa20-lab-starter.git
+
+
+and run the original command again.
+然后再次运行原始命令。
+
+Intro to Assembly with RISC-V Simulator  
+In this course, we have so far dealt mostly with C programs (with the .c file extension), used the gcc program to compile them to machine code, and then executed them directly on your computer or hive machine. Now, we’re shifting our focus to the RISC-V assembly language, which is a lower-level language much closer to machine code. We can’t execute RISC-V code directly because your computer and the hives are built to run machine code from other assembly languages - most likely x86 or ARM.  
+
+In this lab, we will deal with several RISC-V assembly program files, each of which have a .s file extension. To run these, we will need to use Venus, a RISC-V simulator that you can find here. There is also a .jar version of Venus that we have provided in the tools folder under your base lab repository.  
+
+Assembly/Venus Basics  
+To get started with Venus, please take a look at “The Editor Tab” and “The Simulator Tab” in the Venus reference. We recommend that you read this whole page at some point, but these sections should be enough to get started.  
+
+For the following exercises, please make sure your completed code is saved on a file on your local machine. Otherwise, we will have no proof that you completed the lab exercises.  
+
+Exercise 0: Connecting your files to Venus  
+In previous iterations of the course, the Venus web editor allows you to write assembly code from scratch or to manually upload and download files, but thanks to a recent update, you can now “mount” a folder from your local device onto Venus’s web frontend! This means that any changes you make in Venus’s editor will be reflected in your local files, and vice versa.  
+
+This exercise will walk you through the process of connecting your file system to Venus, which should save you a lot of trouble copy/pasting files between your local drive and the Venus editor.  
+
+If for some reason this feature ends up not working for you (it’s relatively new, and there’s a chance there might still be bugs), then for the rest of this assignment, wherever it says to open a file in Venus, you should copy/paste the contents into the Venus web editor, and manually copy/paste those changes back to your local machine.  
+
+Here’s what you need to do:  
+
+In the labs folder on your local machine, run java -jar tools/venus.jar . -dm. This will expose your lab directory to Venus on a network port (6161 by default).  
+You should see the message To connect, enter `mount http://localhost:6161 vmfs` on Venus., as well as a a big “Javalin” logo.  
+If you see a message along the lines of “port unable to be bound”, then you can specify the port number explicitly by appending --port <port number> to the command (for example, java -jar tools/venus.jar . -dm --port 6162 will expose the file system on port 6162)  
+Open https://venus.cs61c.org in your web browser. In the Venus terminal, run mount local vmfs (if you chose a different port, replace “local” with the full URL, such as http://localhost:6162). This connects Venus to your file system.  
+Go to the “Files” tab. You should now be able to see your labs directory under the vmfs folder.  
+Navigate to lab03, and make sure it works by hitting the Edit button next to ex1.s. This should open in the Editor tab.  
+If you make any changes to the file in the Editor tab, hitting command-s on a Mac and ctrl-s on Windows/Linux will update your local copy of the file. To check if the save was successful, open the file on your local machine to see if it matches what you have in the web editor (unfortunately no feedback message has been implemented yet).  
+Note: If you make any changes to a file in your local machine, if you had the same file open in the Venus editor, you’ll need to reopen it from the “Files” menu to get the new changes.  
+To make it so that the file system will attempt to remount automatically whenever you close and reopen Venus, enable “Save on Close” in the Settings pane (again in the Venus tab). This will make the Venus web client attempt to locate the file system exposed by running the Venus jar, and will pop up an error saying that it couldn’t connect to the server if it doesn’t see it running. If this happens, just follow the above steps to manually remount the file system.  
+Once you’ve got ex1.s open, you’re ready to move on to Exercise 1!  
+
+Exercise 1: Familiarizing yourself with Venus  
+Getting started:  
+
+Open ex1.s into the Venus editor. If you were unable to mount the filesystem in Exercise 0, then you can copy/paste ex1.s from your local machine into the Venus editor directly.  
+Click the “Simulator” tab and click the “Assemble & Simulate from Editor” button. This will prepare the code you wrote for execution. If you click back to the “Editor” tab, your simulation will be reset.  
+In the simulator, to execute the next instruction, click the “step” button.
+To undo an instruction, click the “prev” button. Note that undo may or may not undo operations performed by ecall, such as exiting the program or printing to console.
+To run the program to completion, click the “run” button.
+To reset the program from the start, click the “reset” button.
+The contents of all 32 registers are on the right-hand side, and the console output is at the bottom.
+To view the contents of memory, click the “Memory” tab on the right. You can navigate to different portions of your memory using the dropdown menu at the bottom.
+Action Item
+Open ex1.s in Venus and record your answers to the following questions. Some of the questions will require you to run the RISC-V code using Venus’s simulator tab.
+
+What do the .data, .word, .text directives mean (i.e. what do you use them for)? Hint: think about the 4 sections of memory.
+Run the program to completion. What number did the program output? What does this number represent?
+At what address is n stored in memory? Hint: Look at the contents of the registers.
+Without actually editing the code (i.e. without going into the “Editor” tab), have the program calculate the 13th fib number (0-indexed) by manually modifying the value of a register. You may find it helpful to first step through the code. If you prefer to look at decimal values, change the “Display Settings” option at the bottom.
+Exercise 2: Translating from C to RISC-V
+Open the files ex2.c and ex2.s. The assembly code provided (.s file) is a translation of the given C program into RISC-V.
+
+In addition to opening a file in the “Editor” tab and then running in the “Simulator” tab as described above, you can also run ex2.s directly within the Venus terminal by cding into the appropriate folder, then running run ex2.s or ./ex2.s. Typing vdb ex2.s will also assemble the file and take you to the “Simulator” tab directly.
+
+Action Item
+Find/explain the following components of this assembly file.
+
+The register representing the variable k.
+The register representing the variable sum.
+The registers acting as pointers to the source and dest arrays.
+The assembly code for the loop found in the C code.
+How the pointers are manipulated in the assembly code.
+Exercise 3: Factorial
+In this exercise, you will be implementing the factorial function in RISC-V. This function takes in a single integer parameter n and returns n!. A stub of this function can be found in the file factorial.s.
+
+You will only need to add instructions under the factorial label, and the argument that is passed into the function is configured to be located at the label n. You may solve this problem using either recursion or iteration. You may also assume that the factorial function will only be called on positive values with results that won’t overflow a 32-bit two’s complement integer.
+
+Testing
+As a sanity check, you should make sure your function properly returns that 3! = 6, 7! = 5040 and 8! = 40320.
+
+You have the option to test this using the online version of Venus, but we’ve provided a .jar for you to test locally! We’ll be using the .jar in the autograder so make sure to update your factorial.s file and run the following command before you submit to verify that the output is correct. Note that you will need to have java installed to run this command.
+
+$ java -jar tools/venus.jar lab03/factorial.s
+
+
+Exercise 4: Calling Convention Checker
+In this exercise, we’ll be looking at the code in cc_test.s. We’ll be using a feature that’s only available on the command line version of Venus, so if you’re still using the Venus web editor, make sure you hit cmd-s or ctrl-s to make sure your changes are reflected in your local files. Likewise, if you modify your local files and want to use the Venus web simulator, make sure to reopen your file through the simulator to make sure the changes are reflected.
+
+Throughout this course, we will be running automated checks to make sure your assembly complies with RISC-V calling conventions, as described in lecture and discussion. Here’s a quick recap: all functions that overwrite registers that are preserved by convention must have a prologue, which saves those register values to the stack at the start of the function, and an epilogue, which restores those values for the function’s caller. You can find a more detailed explanation along with some concrete examples in these notes.
+
+Bugs due to calling convention violations can often be difficult to find manually, so Venus provides a way to automatically report some of these errors at runtime.
+
+Take a look at the contents of the cc_test.s file, particularly at the main, simple_fn, naive_pow, inc_arr, and helper_fn functions. Now, run Venus locally with the following command:
+
+$ java -jar tools/venus.jar -cc lab03/cc_test.s
+
+
+Note: The -cc flag MUST go between tool/venus.jar and the file you’re running. If it goes before venus.jar it will be treated as an argument to the java program; if it goes after the file name it will treated as an argument to the main function of your assembly program.
+
+The -cc flag enables the calling convention checker, and detects some basic violations. You should see an output similar to the following:
+
+[CC Violation]: (PC=0x00000080) Usage of unset register t0! main.S:58 mv a0, t0
+[CC Violation]: (PC=0x0000008C) Setting of a saved register (s0) which has not been saved! main.S:80 li s0, 1
+[CC Violation]: (PC=0x00000094) Setting of a saved register (s0) which has not been saved! main.S:83 mul s0, s0, a0
+[CC Violation]: (PC=0x00000094) Setting of a saved register (s0) which has not been saved! main.S:83 mul s0, s0, a0
+[CC Violation]: (PC=0x00000094) Setting of a saved register (s0) which has not been saved! main.S:83 mul s0, s0, a0
+[CC Violation]: (PC=0x00000094) Setting of a saved register (s0) which has not been saved! main.S:83 mul s0, s0, a0
+[CC Violation]: (PC=0x00000094) Setting of a saved register (s0) which has not been saved! main.S:83 mul s0, s0, a0
+[CC Violation]: (PC=0x00000094) Setting of a saved register (s0) which has not been saved! main.S:83 mul s0, s0, a0
+[CC Violation]: (PC=0x00000094) Setting of a saved register (s0) which has not been saved! main.S:83 mul s0, s0, a0
+[CC Violation]: (PC=0x000000A4) Save register s0 not correctly restored before return! Expected 0x00000A3F, Actual 0x00000080. main.S:90 ret
+[CC Violation]: (PC=0x000000B0) Setting of a saved register (s0) which has not been saved! main.S:106 mv s0, a0 # Copy start of array to saved register
+[CC Violation]: (PC=0x000000B4) Setting of a saved register (s1) which has not been saved! main.S:107 mv s1, a1 # Copy length of array to saved register
+[CC Violation]: (PC=0x000000E4) Setting of a saved register (s0) which has not been saved! main.S:142 addi s0, t1, 1
+Venus ran into a simulator error!
+Attempting to access uninitialized memory between the stack and heap. Attempting to access '4' bytes at address '347579389'.
+
+
+
+Find the source of each of the errors reported by the CC checker and fix it. Even though the output says main.S, the line number reported should still correspond to the correct line in cc_test.s: this is just an artifact of the way Venus works in order to support combining multiple assembly files together. You can find a list of CC error messages, as well as their meanings, in the Venus reference.
+
+Once you’ve fixed all the violations reported by the CC checker, the code might still fail: this is likely because there’s still some remaining calling convention errors that Venus doesn’t report. Since function calls in assembly language are ultimately just jumps, Venus can’t report these violations without more information, at risk of producing false positives.
+
+The fixes for all of these errors (both the ones reported by the CC checker and the ones it can’t find) should be added near the lines marked by the FIXME comments in the starter code.
+
+Note: Venus’s calling convention checker will not report all calling convention bugs; it is intended to be used primarily as a sanity check. Most importantly, it will only look for bugs in functions that are exported with the .globl directive - the meaning of .globl is explained in more detail in the Venus reference.
+
+Action Item
+Resolve all the calling convention errors in cc_test.s, and be able to answer the following questions:
+
+What caused the errors in simple_fn, naive_pow, and inc_arr that were reported by the Venus CC checker?
+In RISC-V, we call functions by jumping to them and storing the return address in the ra register. Does calling convention apply to the jumps to the naive_pow_loop or naive_pow_end labels?
+Why do we need to store ra in the prologue for inc_arr, but not in any other function?
+Why wasn’t the calling convention error in helper_fn reported by the CC checker? (Hint: it’s mentioned above in the exercise instructions.)
+Once you have answered these, run Venus with the calling convention checker on factorial.s from the last exercise as well. Make sure to fix any bugs you find.
+
+Testing
+After fixing the errors in cc_test.s, run Venus locally with the above command to make sure the behavior of the functions hasn’t changed and that you’ve remedied all calling convention violations.
+
+Once you have fixed everything, running the above Venus command should output the following:
+
+Sanity checks passed! Make sure there are no CC violations.
+Found 0 warnings!
+
+
+Exercise 5: RISC-V function calling with map
+This exercise uses the file list_map.s.
+
+In this exercise, you will complete an implementation of map on linked-lists in RISC-V. Our function will be simplified to mutate the list in-place, rather than creating and returning a new list with the modified values.
+
+You will find it helpful to refer to the RISC-V green card to complete this exercise. If you encounter any instructions or pseudo-instructions you are unfamiliar with, use this as a resource.
+
+Our map procedure will take two parameters; the first parameter will be the address of the head node of a singly-linked list whose values are 32-bit integers. So, in C, the structure would be defined as:
+
+struct node {
+    int value;
+    struct node *next;
+};
+
+
+Our second parameter will be the address of a function that takes one int as an argument and returns an int. We’ll use the jalr RISC-V instruction to call this function on the list node values.
+
+Our map function will recursively go down the list, applying the function to each value of the list and storing the value returned in that corresponding node. In C, the function would be something like this:
+
+void map(struct node *head, int (*f)(int))
+{
+    if (!head) { return; }
+    head->value = f(head->value);
+    map(head->next,f);
+}
+
+
+If you haven’t seen the int (*f)(int) kind of declaration before, don’t worry too much about it. Basically it means that f is a pointer to a function, which, in C, can then be used exactly like any other function.
+
+There are exactly nine (9) markers (8 in map and 1 in main) in the provided code where it says YOUR CODE HERE.
+
+Action Item
+Complete the implementation of map by filling out each of these nine markers with the appropriate code. Furthermore, provide a sample call to map with square as the function argument. There are comments in the code that explain what should be accomplished at each marker. When you’ve filled in these instructions, running the code should provide you with the following output:
+
+9 8 7 6 5 4 3 2 1 0
+81 64 49 36 25 16 9 4 1 0
+
+
+The first line is the original list, and the second line is the modified list after the map function (in this case square) is applied.
+
+Testing
+To test this in the Venus web simulator, run list_map.s and examine the output. To test this locally, run the following command in your root lab directory (much like the one for factorial.s):
+
+$ java -jar tools/venus.jar lab03/list_map.s
+
+
+Transitioning to More Complex RISC-V Programs
+In the future, we’ll be working with more complex RISC-V programs that require multiple files of assembly code. To prepare for this, we recommend looking over the following sections of the Venus reference:
+
+Writing Larger RISC-V Programs
+Using the Web Terminal
+Passing Command Line Arguments
+Checkoff
+Please submit to the Lab Autograder assignment (same as last week!).
+
+Checkoff questions for lab 3:
+
+Make sure you understand and can answer the questions in exercises 1, 2, and 4!
+Previous
+Lab02
+Next
+Lab04
+Before you begin  开始前
+Goals  目标
+Getting the files  获取文件
+Intro to Assembly with RISC-V Simulator
+RISC-V 模拟器中的汇编语言入门
+Assembly/Venus Basics  汇编/Venus 基础
+Exercise 0: Connecting your files to Venus
+练习 0：将你的文件连接到 Venus
+Exercise 1: Familiarizing yourself with Venus
+练习 1：熟悉 Venus
+Action Item  行动项
+Exercise 2: Translating from C to RISC-V
+练习 2：将 C 语言翻译为 RISC-V
+Action Item  行动项
+Exercise 3: Factorial  练习 3：阶乘
+Testing  测试
+Exercise 4: Calling Convention Checker
+练习 4：调用约定检查器
+Action Item  行动项
+Testing  测试
+Exercise 5: RISC-V function calling with map
+练习 5：使用 map 的 RISC-V 函数调用
+Action Item  行动项
+Testing  测试
+Transitioning to More Complex RISC-V Programs
+过渡到更复杂的 RISC-V 程序
+Checkoff  检查点
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab04
+Lab 4
+Objectives
+TSWBAT practice debugging RISC-V assembly code.
+TSWBAT write RISC-V functions that use pointers.
+RISC-V Simulator
+Like last week, we will be using the Venus RISC-V simulator (which can be found online here). Also, please refer to the Venus Guide on our course website when you need a refresher on any of the Venus features.
+
+Exercise 1: Debugging megalistmanips.s
+In Lab 3, you completed a RISC-V procedure that applied a function to every element of a linked list. In this lab, you will be working with a similar (but slightly more complex) version of that procedure.
+
+Now, instead of having a linked list of int’s, our data structure is a linked list of int arrays. Remember that when dealing with arrays in struct’s, we need to explicitly store the size of the array. In C code, here’s what the data structure looks like:
+
+struct node {
+    int *arr;
+    int size;
+    struct node *next;
+};
+
+
+Also, here’s what the new map function does: it traverses the linked list and for each element in each array of each node, it applies the passed-in function to it, and stores it back into the array.
+
+void map(struct node *head, int (*f)(int)) {
+    if (!head) { return; }
+    for (int i = 0; i < head->size; i++) {
+      head->arr[i] = f(head->arr[i]);
+    }
+    map(head->next, f);
+}
+
+
+For the purpose of this lab, don’t worry too much about the weird syntax for C function pointers (you are welcome to learn more about them here). Basically, you can pass arguments into function pointers just like you do with normal functions.
+
+Action Item
+Record your answers to the following questions in a text file. Some of the questions will require you to run the RISC-V code using Venus’ simulator tab.
+
+Find the five mistakes inside the map function in megalistmanips.s. Read all of the commented lines under the map function in megalistmanips.s (before it returns with jr ra), and make sure that the lines do what the comments say. Some hints:
+
+Why do we need to save stuff on the stack before we call jal?
+What’s the difference between add t0, s0, x0 and lw t0, 0(s0)?
+Pay attention to the types of attributes in a struct node.
+Note: you need only focus on the map, mapLoop, and done functions but it’s worth understanding the full program.
+For this exercise, we are requiring that you don’t use any extra save registers in your implementation. While you normally can use the save registers to store values that you want to use after returning from a function (in this case, when we’re calling f in map), we want you to use temporary registers instead and follow their caller/callee conventions. The provided map implementation only uses the s0 and s1 registers, so we’ll require that you don’t use s2-s11.
+
+Make an ordered list of each of the five mistakes, and the corrections you made to fix them.
+
+Save your corrected code in the megalistmanips.s file. Use the -cc flag to run a basic calling convention check on your code locally:
+
+java -jar venus.jar megalistmanips.s -cc // Append appropriate path to `venus.jar` 
+
+
+The CC checker should report 0 warnings.
+
+Again, the Venus Guide is a great resource if you feel unsure about any of the Venus features.
+
+Note: The CC checker won’t check if you are using registers besides s0 and s1, but you need to implement this requirement in order to pass the autograder.
+
+For reference, running megalistmanips on the web interface should give the following output:
+
+Lists before:
+5 2 7 8 1
+1 6 3 8 4
+5 2 7 4 3
+1 2 3 4 7
+5 6 7 8 9
+
+Lists after:
+30 6 56 72 2
+2 42 12 72 20
+30 6 56 20 12
+2 6 12 20 56
+30 42 56 72 90
+
+
+Checkpoint
+At this point, make sure that you are comfortable with the following. Note that these will not be part of the lab checkoff, but are meant to benchmark how comfortable you are with the material in the exercise.
+
+You should know how to debug in Venus, including stepping through code and inspecting the contents of registers.
+You should understand how RISC-V interfaces with memory.
+You should understand CALLER/CALLEE conventions in RISC-V.
+Exercise 2: Write a function without branches
+Consider the discrete-valued function f defined on integers in the set {-3, -2, -1, 0, 1, 2, 3}. Here’s the function definition:
+
+f(-3) = 6
+f(-2) = 61
+f(-1) = 17
+f(0) = -38
+f(1) = 19
+f(2) = 42
+f(3) = 5
+
+
+Action Item
+Implement the function in discrete_fn.s in RISC-V, with the condition that your code may NOT use any branch and/or jump instructions!
+Save your corrected code in a file discrete_fn.s.
+Hint: How do you load a word from a dynamic address?
+
+Checkoff
+Please submit to the Lab Autograder assignment (same as last week!).
+
+Previous
+Lab03
+Next
+Lab05
+Objectives
+RISC-V Simulator
+Exercise 1: Debugging megalistmanips.s
+Action Item
+Checkpoint
+Exercise 2: Write a function without branches
+Action Item
+Checkoff
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab05
+Lab 5  实验五
+IMPORTANT: Do not move staff-provided input and output pins. This will break the testing framework and harness. If your circuit doesn’t pass the tests and you think it is correct, ensure your circuit fits in the corresponding harness in testing/circ_files/exX_test.circ.  
+
+Objectives  目标
+TSWBAT practice designing and debugging basic digital logic circuits in Logisim  
+TSW gain more experience designing and debugging circuits with both combinational logic and stateful elements  
+TSW gain experience designing FSMs and implementing them as digital logic  
+Setup  设置
+Pull the Lab 5 files from the lab starter repository with  
+
+All the work in this lab will be done from the digital logic simulation program Logisim Evolution, which is included in the lab starter files.  
+
+IMPORTANT: Please use the .jar file we’ve given you, not the version of Logisim that is downloaded on the lab computers! And a note: Logisim does not save your work as you go along, and it does not automatically create a new .circ file when you open it! Save when you start, and save frequently as you work.  
+
+You can open Logism via:  
+
+java -jar logisim-evolution.jar
+
+
+IMPORTANT: Logism is a Java program that requires a GUI, so doing the lab over terminal won’t work (without window forwarding, detailed below). If you wish to work on the lab locally, ensure you have Java installed on your local machine, and pull the latest lab starter files to your local machine. Then, you should open the program as above. If you wish to run the program over the terminal, you will need to add the -X flag to your SSH command to enable window forwarding (for example, ssh -X cs61c-xxx@...). On Windows machines, you may need to additionally install Xming. On OSX, you may need to install XQuartz.  
+
+Introduction Video  
+For this lab, we created an optional intro video! This video covers the introduction to logisim features described in exercises 0 to 3, so you can skip some of the introductory text in those sections if you watch it. You still have to do the action items in exercises 1 to 5 though!  
+
+Introduction  
+Part 0: Warm Up  
+We’ll begin by creating a very simple circuit just to get the feel for placing gates and wires. Before you start, take note of a useful feature: the zoom function! It’s in the bottom left corner, and will make your life much easier for the next couple weeks.  
+
+
+
+ Start by clicking the AND gate button. This will cause the shadow of an AND gate to follow your cursor around. Click once within the main schematic window to place an AND gate.  
+
+ Click the Input Pin button. Now, place two input pins somewhere to the left of your AND gate.  
+
+ Click the Output Pin button. Then place an output pin somewhere to the right of your AND gate. Your schematic should look something like this at this point:  
+
+
+
+ Click the Select tool button. Click and drag to connect the input pins to the left side of the AND gate. This will take several steps, as you can only draw vertical and horizontal wires. Just draw a wire horizontally, release the mouse button, then click and drag starting from the end of the wire to continue vertically. You can attach the wire to any pin on the AND gate on the left side. Repeat the same procedure to connect the output of the AND Gate (right side) to the output pin. After completing these steps your schematic should look roughly like this:  
+
+
+
+ Finally, click the Poke tool and try clicking on the input pins in your schematic. Observe what happens. Does this match with what you think an AND Gate should do? Note that poking the wires themselves tells you the current value on that wire; this will be very useful later when you build more complex circuits.  
+
+Part 1: Sub-Circuits  
+Just as C programs can contain helper functions, a schematic can contain subcircuits. In this part of the lab, we will create several subcircuits to demonstrate their use.  
+
+IMPORTANT NOTE: Logisim Evolution guidlines say you cannot name a subcircuit after a keyword (e.g. NAND), also circuit names must start with “A-Za-z”, so no numbers.  
+
+Action Item  行动项
+Follow the steps below and show your final circuit to your TA at checkoff (remember to save!):
+
+Do not move staff-provided input and output pins. This will break the testing framework and harness. If your circuit doesn’t pass the tests and you think it is correct, ensure your circuit fits in the testing harness in testing/circ_files/ex1_test.circ.
+
+Open up the Exercise 1 schematic (File->Open->ex1.circ).
+Open up the NAND1 empty subcircuit by double clicking on the name NAND1 in the circuit selector in the left menu. (note the 1 at the end; because there is a component called NAND, we cannot call it NAND).
+In the new schematic window that you see create a simple NAND circuit with the 2 input pins on the left side and the output pin on the right side. Do this without using the built-in NAND gate from the Gates folder (i.e. only use the AND, OR, and NOT gates provided next to the selection tool icon). You can change the labels for the inputs and output by selecting the input/output using the select tool and changing the property Label in the bottom left of the window.
+
+Repeat these steps to create several more subcircuits: NOR, XOR, 2-to-1 MUX, and 4-to-1 MUX in the given skeletons. Please do not change the names of the subcircuits or create new ones; do you work in the respectively named circuit or else the autograder will not work properly. Do not use any built-in gates other than AND, OR, and NOT. Once you’ve built a subcircuit, you may (and are encouraged to) use it to build others. You can do this by clicking and placing your created subcircuit like you would any other component. Note: for the 4-to-1 MUX, Sel0 and Sel1 correspond to the 0th and 1st bits of the 2-bit selector, respectively. Hint: Try writing a truth table. You might also find the lecture slides useful for a refresher on how to build these. You may want to consider using some of your custom subcircuits when designing the others.
+
+Checkpoint
+At this point, make sure that you are comfortable with the Logisim environment, creating sub-circuits, and re-using such circuits in other circuits.
+
+Part 2: Storing State
+Let’s implement a circuit that increments a value ad infinitum. The difference between this circuit and the circuits you’ve built for lab so far is that it will store this value in the state of a register.
+
+Action Item
+The following steps will show you how to add registers to your circuit. Complete the steps and show the final circuit to your TA (remember to save!):
+
+Do not move staff-provided input and output pins. This will break the testing framework and harness. If your circuit doesn’t pass the tests and you think it is correct, ensure your circuit fits in the testing harness in testing/circ_files/ex2_test.circ.
+
+Open up the Exercise 2 schematic (File->Open->ex2.circ) and go to the empty AddMachine circuit.
+
+Load in the Arithmetic Library if it is not already loaded (go to Project->Load Library->Built in Library and select Arithmetic). This library contains elements that will perform basic mathematical operations. When you load the library, the circuit browser at left will have a new Arithmetic folder.
+
+
+
+Select the adder subcircuit from the Arithmetic library and place the adder into your AddMachine subcircuit.
+
+Load in the Memory Library if it is not already loaded (go to Project->Load Library->Built in Library and select Memory). This library contains memory elements used to keep state in a circuit. A new Memory folder will appear in the circuit browser.
+
+Select the register from the Memory folder and place one register into your subcircuit. Below is an image diagraming the parts of a register.
+
+
+
+Connect a clock to your register. You can find the clock circuit element in the Wiring folder in the circuit browser.
+
+Connect the output of the adder to the input of the register, and the output of the register to the input of the adder.
+
+You may get a “Incompatible widths” error when you try to connect components. This means that your wire is trying to connect two pins together with different bit widths. If you click on the adder with the Selection tool, you will notice that there is a Data Bit Width property in the bottom left field of the window. This value determines the number of bits each input and output the adder has. Change this field to 8 and the “Incompatible widths” error should be resolved.
+Wire an 8-bit constant 1 to the second input of the adder. You can find the Constant circuit element in the Wiring library.
+
+Connect the two output pins to your circuit so that you may monitor what comes out of the adder and the register. The output of the adder should be connected to ADD_OUT and the output of the register to REG_OUT. Thus, by the end, your circuit should look like as follows:
+
+
+
+Now start running your circuit by going to Simulate->Ticks Enabled (or Command/Control + K). Your circuit should now be outputting a counter in binary form.
+If you want to run your circuit faster, you can change the tick frequency in Simulate->Tick Frequency.
+Checkpoint
+At this point, make sure that you are comfortable with designing and simulating simple digital logic circuits in Logisim environment that use a mix of combinational logic and state elements (registers).
+
+Part 3: FSMs to Digital Logic
+Now we’re ready to do something really cool: translate a FSM into a digital logic circuit.
+
+For those of you who need a reminder, FSM stands for Finite State Machine. FSM’s keep track of inputs given, moves between states based on these inputs, and outputs something everytime something is input.
+
+We use a register to store the state of the FSM we’re currently in, and combinational logic to map FSM input & current register state to FSM output & next register state.
+
+Action Item
+Load the given starter file ex3.circ into Logism. Modify this circuit’s subcircuits StateBitZero and StateBitOne to implement the following FSM:
+
+If two ones in a row or two zeroes in a row have ever been seen, output zeros forever. Otherwise, output a one.
+
+Do not move staff-provided input and output pins. This will break the testing framework and harness. If your circuit doesn’t pass the tests and you think it is correct, ensure your circuit fits in the testing harness in testing/circ_files/ex3_test.circ.
+
+Show this completed circuit to your TA (remember to save!)
+
+Note that the FSM is implemented by the following diagram (the four state names 00, 01, 10, 11 are just names written in binary - they have no direct relationship with the actual zeros and ones of the FSM input/output). Take some time to understand how this diagram implements the FSM:
+
+
+
+Observe that the following is a truth table for the FSM (convince yourself of this):
+
+ st1 	 st0 	 input 	 next st1 	 next st0 	 output 
+0	0	0	0	1	1
+0	0	1	1	0	1
+0	1	0	1	1	0
+0	1	1	1	0	1
+1	0	0	0	1	1
+1	0	1	1	1	0
+1	1	0	1	1	0
+1	1	1	1	1	0
+We’ve provided you with a starter Logisim circuit to start out in ex3.circ.
+
+Note that the top level of the circuit looks almost exactly the same as our previous adder circuit, but now there’s a FSMLogic block instead of an adder block. FSMLogic is the combinational logic block for this FSM. We have handled the output bit for you, as it’s the most complicated to simplify and implement. You should complete the circuit by completing the StateBitOne and StateBitZero subcircuits, which produces the next state bits.
+
+Checkpoint
+At this point, you should have more familiarity with designing and implementing FSMs, and the close relationship between FSMs and digital logic.
+
+Advanced Logisim
+Setup
+Feel free to do each part as separate sub-circuits in the same Logisim file.
+
+The following parts will introduce you to more advanced techniques/concepts in Logisim.
+
+Advanced Features
+Here are three Logisim features that should both save you a lot of time and make your circuits look much cleaner.
+
+Splitters
+Splitters allow you to take a multi-bit value and split it up into smaller parts, or (despite the name) combine multiple values that are one or more bits into a single value. Here, we split the 4-bit binary number 1001 into 10 and 01, then recombine it with 11 into the final 5-bit number 111001:
+
+
+
+Click on a splitter to get its menu in the sidebar. You can use this menu to determine the number of arms on your splitter and how many bits should go on each arm. For the circuit above, the left splitter’s menu looks like this:
+
+
+
+While the right splitter’s menu looks like this:
+
+
+
+Notice that there’s an option called facing. You can use this to rotate your splitter. Above, see that the splitter on the right is facing West while the splitter on the left is facing East.
+
+If you see an error wire that is orange, this means that your bit width in does not match your bit width out. Make sure that if you’re connecting two components with a wire, you correctly set the bit width in that component’s menu.
+
+
+
+Tunnels
+A tunnel allows you draw an “invisible wire” to bind two points together. Tunnels are grouped by case-sensitive labels give to a wire. They are used to connect wires like so:
+
+
+
+Which has an effect such as the following:
+
+
+
+Some care should be taken as to which wires are connected with tunnels to which other wires, such as in this case:
+
+
+
+Which in turn has the following effect:
+
+
+
+We strongly recommend you use tunnels with Logisim, because they make your circuits much cleaner looking, and therefore easier to debug.
+
+Extenders
+When changing the width of a wire, you should use a bit extender for clarity. For example, consider the following implementation of extending an 8-bit wire into a 16-bit wire:
+
+
+
+Whereas the following is much simpler, easier to read, and less error-prone:
+
+
+
+Additionally consider the case of throwing out bits. In this example, an 8-bit wire is being converted into a 4-bit wire by throwing out the other bits:
+
+
+
+Despite the implications of its name, a bit extender can also do this same operation:
+
+
+
+Part 4: Practice with Splitters
+We’re going to construct a circuit that manipulates an 8-bit number.
+
+Action Item
+Complete the following steps to create the splitter circuit, and show this to your TA (remember to save). When you’ve completed the circuit, answer the question in step 11.
+
+Do not move staff-provided input and output pins. This will break the testing framework and harness. If your circuit doesn’t pass the tests and you think it is correct, ensure your circuit fits in the testing harness in testing/circ_files/ex4_test.circ.
+
+Open up the Exercise 4 schematic (File->Open->ex4.circ) and go to the empty Split circuit.
+
+Go to the Wiring folder and select the Splitter circuit. This circuit will take a wire and split it into a set of wires of smaller width. Conversely, it can also take many sets of wires and combine them into one.
+
+Change the Bit Width In property (bus width) to 8, and Fan Out property (# of branches) to 3. Your splitter should now look as follows:
+
+
+
+Now, select which bits to send out to which part of your fan. The least significant bit is bit 0 and the most significant bit is bit 7. Bit 0 should come out on fan arm 0, bits 1, 2, 3, 4, 5 and 6 should come out on fan arm 1, and bit 7 should come out on fan arm 2. FYI: the None option means that the selected bit will not come out on ANY of the fan arms.
+
+Route In1 to the splitter. Attach a 2-input AND gate to fan arms 0 and 2 and route the output of the AND gate to Out1.
+
+Now, interpret the input as a “sign and magnitude” number. Place logic gates and other circuits to prepare Out2 to be the negative “sign and magnitude” value of the input. Sign and magnitude is an alternate way of representing signed values - like 2’s Complement, but simpler! The combinational logic should be straight-forward.
+
+We will need another splitter to recombine the fans into a single 8-bit bus. Place another splitter with the proper properties (Bit Width In: 8, Fan Out: 3, correct fan widths). Play with the Facing and Appearance properties to make your final circuit as clean-looking as possible. At this point, Out2 should be the negation of the input (interpreting the input as a “sign and magnitude” value).
+
+Answer the following question:
+
+If we decide to take the input and interpret it as a 2’s Complement number, what inputs will produce Out1 = 1? Hint: What do the first and last bits of a 2’s Complement number being 1 tell you about the number?
+
+Part 5: Rotate Right
+With your knowledge of splitters and your knowledge and experience with multiplexers, you are ready to implement a non-trivial combinational logic block: rotr, which stands for “Rotate Right”. The idea is that rotr A,B will “rotate” the bit pattern of input A to the right by B bits. So, if A were 0b1011010101110011 and B were 0b0101 (5 in decimal), the output of the block would be 0b1001110110101011. Notice that the rightmost 5 bits were rotated off the right end of the value and back onto the left end. In RTL, the operation would be something like R = A >> B | A << (16 - B).
+
+Action Item
+Implement a subcircuit named rotr with the following inputs:
+
+A (16-bit), the 16-bit input to be rotated
+B (4-bit), the rotation amount (why 4 bits?) You can find the starter subcircuit in ex5.circ.
+Do not move staff-provided input and output pins. This will break the testing framework and harness. If your circuit doesn’t pass the tests and you think it is correct, ensure your circuit fits in the testing harness in testing/circ_files/ex5_test.circ.
+
+The output should be A rotated right by B bit positions, as outlined above. You are NOT allowed to use Logisim shifters in your solution, though all other combinational logic (MUXes, constants, gates, adders, etc.) is allowed. Logisim’s built-in MUXes (find them under the Plexers menu) might be especialy helpful. Your solution shouldn’t involve a clock or any clocked elements, like registers.
+
+Hint 1: Before you start wiring, you should think very carefully about how you might decompose this problem into smaller ones and join them together. You should feel very free to use subcircuits when implementing rotr. If you don’t, expect to regret it.
+
+Hint 2: Just because we gave you an RTL representation doesn’t mean it’s the best way to look at this problem. Think about the input bits of B and think about how to effectively use splitters! Can you do something with the binary form? Remember why binary is good for use in computers: a 1 is easy to represent as an ON signal, and a 0 is easy to represent as an OFF signal. Let’s say we want to rotate 9 times. 9 is 1001 in binary, or 1*8 + 0*4 + 0*2 + 1*1. Can you use this to make a cleaner circuit? Making use of the rot* circuits we have provided is a good idea that will keep things clean!
+
+Testing
+To test, run the testing script via:
+
+Since Logisim will be running in one terminal window already, make sure to open up a new window to run the testing script. If it says you don’t have permission, run:
+
+This script will copy your circuits into a testing harness, run your circuits on different inputs, and compare your results to ours. Therefore, please do not touch anything in the testing folder unless a TA instructs you to do so. However, you are more than welcome to check out the circuitry involved in testing your code as you will encounter it again when working on Project 3.
+
+Checkoff
+Please submit to the Lab Autograder assignment (same as last week!).
+
+Show your working 2-to-1 MUX, 4-to-1 MUX, AddMachine, StateBitZero, StateBitOne, Split, and rotr circuits to your TA. Be ready to explain how they work.
+
+Previous
+Lab04
+Next
+Lab06
+Objectives  目标
+Setup  设置
+Introduction Video  介绍视频
+Introduction  介绍
+Part 0: Warm Up
+第 0 部分：热身
+Part 1: Sub-Circuits  第 1 部分：子电路
+Part 2: Storing State
+第二部分：状态存储
+Part 3: FSMs to Digital Logic
+第三部分：状态机到数字逻辑
+Advanced Logisim  高级 Logisim
+Setup  设置
+Advanced Features  高级功能
+Part 4: Practice with Splitters
+第四部分：使用 Splitters 进行练习
+Part 5: Rotate Right
+第五部分：向右旋转
+Testing  测试
+Checkoff  检查点
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab06
+Lab 6  实验六
+Objectives:  目标：
+TSWBAT analyze timing for circuits and design circuits.  
+TSW better understand the motivation behind pipelining and the 5 stages in our CPU.  
+Setup  设置
+Pull the Lab 6 files from the lab starter repository with  
+
+All the work in this lab will be done from the digital logic simulation program Logisim Evolution, which is included in the lab starter files.
+本实验的所有工作都将使用数字逻辑仿真程序 Logisim Evolution 完成，该程序包含在实验启动文件中。
+
+IMPORTANT: Please use the .jar file we’ve given you, not the version of Logisim that is downloaded on the lab computers! And a note: Logisim does not save your work as you go along, and it does not automatically create a new .circ file when you open it! Save when you start, and save frequently as you work.
+重要提示：请使用我们提供的.jar 文件，而不是实验计算机上下载的 Logisim 版本！另外请注意：Logisim 不会随着你的操作自动保存工作，当你打开它时也不会自动创建新的.circ 文件！开始时保存，并在工作中频繁保存。
+
+You can open Logism via:
+你可以通过以下方式打开 Logism：
+
+java -jar ../lab05/logisim-evolution.jar
+
+
+IMPORTANT: Logism is a Java program that requires a GUI, so doing the lab over terminal won’t work (without window forwarding, detailed below). If you wish to work on the lab locally, ensure you have Java installed on your local machine, and pull the latest lab starter files to your local machine. Then, you should be open the program as above. If you wish to run the program over the terminal, you will need to add the -X flag to your SSH command to enable window forwarding (for example, ssh -X cs61c-xxx@...). On Windows machines, you may need to additionally install Xming. However, we recommend that you do not run logisim over ssh if you are able to run it locally.  
+
+Exercise 1 - Inefficiencies Everywhere  
+For this exercise, we can assume that registers initially carry the value zero. We will be using the lab file exercise1.circ, which should have a subcircuit called non_pipelined which looks something like this:  
+
+
+
+All this circuit does is take in two inputs, multiply them together, and then add the result to the current state value. For this circuit, let the propagation delay of an adder block be 45ns and the propagation delay of a multiplication block be 60ns. The register has a CLK-to-Q delay of 10ns, setup time of 10ns, and hold time of 5ns. Calculate the maximum clock rate at which this circuit can operate. Assume that both inputs come from clocked registers that receive their data from an outside source.  
+
+Checkpoint  
+At this point, make sure that you are comfortable with calculating clock rate using propagation delays and finding the critical path  
+Be ready to show your calculations to achieving the maximum clock rate for the non-pipelined circuit.  
+Exercise 2 - Pipe that Line  
+We want to improve the performance of this circuit and let it operate at a higher clock rate. In order to accomplish this, we want to have two stages in our pipeline: a multiplication stage and an addition stage, in that order.  
+
+In order to check that your pipelining still produces correct outputs, we will consider the outputs from the circuit “correct” if and only if it corresponds to the sequence of outputs the non-pipelined version would emit, bar some leadings zeroes. For example, if for some sequence of inputs, the non-pipelined version emits the sequence [3, 5, 1, 2, 4, …]. Then, the correct pipelined circuit might emit the sequence [0, 3, 5, 1, 2, 4, …] for the same sequence of inputs. You can check this by simulating the circuit (using the “Simulate” menu dropdown) and either ticking the clock manually or enabling continuous ticks.  
+
+In your exercise1.circ file, the main circuit is set up to produce the output sequence [3, 5, 1, 2, 4, -1, 0, 0, …] from the non-pipelined version of the circuit. The ROM blocks should be initialized to the proper inputs, but if something goes wrong, select the ROM, click on “Contents”, click “Open”, then choose Romdata.  
+
+Note that in order to pipeline the circuit, we need a register to hold the intermediate value of the computation between pipeline stages. This is a general theme with pipelines.  
+
+Tasks  
+Complete the sub-circuit pipelined. You will need to add a register to divide the multiplication and addition stages up.  
+Calculate the maximum clock rate for the pipelined version of the circuit that you have created  
+We discussed that if a computation depends on the output of a previous computation, it’s difficult to pipeline them and we often need to insert a pipeline “bubble” (or several) to ensure that the output of the first computation is ready to be an input to the second. As a reminder a bubble is the process of purposely delaying an instruction in the pipeline. It is important to understand why such “bubbles” are unnecessary for this particular circuit.  
+Checkpoint  
+At this point, make sure you are comfortable figuring out the clock rate for a pipelined circuit  
+Be ready to show your calculations for achieving the maximum pipelined clock rate and know why this circuit does not require any “bubbles”.  
+Exercise 3 - Mid Semester Survey  
+As part of the semester, we ask that you provide feedback for how the course is going. While we keep answers anonymous, we require that all students fill out the survey to receive credit for this lab. You can find the survey at: https://docs.google.com/forms/d/e/1FAIpQLSc9Bu1hf1SiLn06qhxLeI0vGuAQpZ4_jFXtWblUlUcBwJCU2A/viewform. All you need to show is the “You’ve already responded” page to receive credit for this portion.  
+
+Checkoff  检查点
+There is no dedicated Lab Autograder assignment for this lab. Here are the checkoff requirements:  
+
+Exercise 1:
+
+Show your calculations for the maximum clock rate for the non-pipelined circuit to your TA/AI.
+Exercise 2:
+
+Show your shiny new pipelined circuit
+Show your calculations for the maximum clock rate for the pipelined circuit
+Explain why we don’t need any “bubbles” for our pipelined circuit
+Exercise 3:
+
+Show that you have filled out the mid-semester survey.
+Previous
+Lab05
+Next
+Lab07
+Objectives:  目标：
+Setup  设置
+Exercise 1 - Inefficiencies Everywhere
+练习 1 - 处处低效
+Checkpoint  检查点
+Exercise 2 - Pipe that Line
+练习 2 - 管道那行
+Tasks  
+Checkpoint  检查点
+Exercise 3 - Mid Semester Survey
+练习 3 - 学期中调查
+Checkoff  检查点
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab07
+Lab 7  实验 7
+Objectives:  目标：
+TSW analyze how memory access patterns determine cache hit rates  
+TSW analyze and discover which memory access patterns produce GOOD hit rates  
+TSWBAT analyze hit rates for caches and be able to optimize code accesses to produce good hit rates  
+Setup  设置
+Pull the lab 7 files from the lab starter repository with  
+
+For this lab, record your answers to the Tasks questions in the provided exercise1.txt, exercise2.txt, and exercise3.txt files. For numerical answers, write the number instead of spelling it out (e.g. “7” instead of “seven”). The Checkoff Question lines are ignored by the autograder and there for your convenience. The autograder assumes that the original formatting will not be changed, so please don’t add additional lines, switch existing lines, or otherwise modify the current formatting.  
+
+Understanding how caches work is typically one of the hardest tasks for students in 61C.  
+
+This exercise will use some cool cache visualization tools to get you more familiar with cache behavior and performance terminology with the help of the file cache.s provided in the starter files. This is not an actual exercise, but more of an explanation on how to use Venus as a cache visualization tool!  
+
+At this point, read through cache.s to get a rough idea of what the program does. Make sure you go through what the pseudocode does and what the argument registers hold before you proceed to analyze cache configurations on it.  
+
+The most important thing to understand is the section labeled “PSEUDOCODE” at the top of the file. When you run cache.s, instructions that perform this pseudocode will be executed. Basically, you’ll just either zero out some elements of some array (option 0) or you’ll increment them (option 1).  
+Which elements you access is determined by the Step Size (a1) and how many times you do so is determined by the Rep Count (a2). These two parameters will most directly affect how many cache hits vs. misses will occur. The Option (a3) will also change stuff, and of course the cache parameters themselves will too.  
+For each of the scenarios below, you’ll be repeating these steps:  
+
+Paste the contents of cache.s into Venus  
+In the code for cache.s, set the appropriate Program Parameters as indicated at the beginning of each scenario (by changing the immediates of the commented li instructions in main)  
+Simulator–>Cache.  
+Set the appropriate Cache Parameters as indicated at the beginning of each scenario.  
+As you execute code in Venus, any DATA memory access (load or store) will show up (instruction fetches not shown because instructions are loaded into a separate instruction cache that is not shown in Venus).  
+The Cache Simulator will show the state of your data cache. If you reset your code, you will also reset the cache hit/miss rate as well!  
+
+IMPORTANT: If you run the code all at once, you will get the final state of the cache and hit rate. You will probably benefit the most from setting a breakpoint in the loop wordLoop right before or after each memory access to see exactly where the hits and misses are coming from.  
+
+Review - Hit and Miss Policies  
+The Venus cache simulator currently simulates a write-through, write-allocate cache. Here’s a reminder about the three different cache hit policies you should know about:  
+
+Write-back means that on a write hit, data is written to the cache only, and when this write happens, the dirty bit for the block that was written becomes 1. Writing to the cache is fast, so write latency in write-back caches is usually quite small. However, when a block is evicted from a write-back cache, if the dirty bit is 1, memory must be updated with the contents of that block, as it contains changes that are not yet reflected in memory. This makes write-back caches more difficult to implement in hardware.  
+Write-through means that on a write hit, data is written to both the cache and main memory. Writing to the cache is fast, but writing to main memory is slow; this makes write latency in write-through caches slower than in a write-back cache. However, write-through caches mean simpler hardware, since we can assume in write-through caches that memory always has the most up-to-date data.  
+Write-around means that in every situation, data is written to main memory only; if we have the block we’re writing in the cache, the valid bit of the block is changed to invalid. Essentially, there is no such thing as a write hit in a write-around cache; a write “hit” does the same thing as a write miss.  
+There are also two miss policies you should know about:  
+
+Write-allocate means that on a write miss, you pull the block you missed on into the cache. For write-back, write-allocate caches, this means that memory is never written to directly; instead, writes are always to the cache and memory is updated upon eviction.  
+No write-allocate means that on a write miss, you do not pull the block you missed on into the cache. Only memory is updated.  
+Additionally, in this course, we talk about several replacement policies, in order from most useful to least useful (normally):  
+
+LRU - Least recently used—when we decide to evict a cache block to make space, we select the block that has been used farthest back in time of all the blocks.  
+Random - When we decide to evict a cache block to make space, we randomly select one of the blocks in the cache to evict.  
+MRU - Most recently used—when we decide to evict a cache block to make space, we select the block that has been used most recently of all the blocks.  
+The important takeaway concerning Venus here: in a write-through cache (like in Venus), even though you are updating memory on writes, because we also write to the cache, we consider writes to blocks we have in the cache to be write hits.  
+
+Common question(s):  
+
+Don’t we usually pair write-back with write-allocate and write-through with no write-allocate? Yes, we learned in class that the ordinary pairing of hit policy/miss policy is write-back/write-allocate and write-through/no write-allocate. However, with respect to the cache, write-through and write-back caches behave similarly on hits (both write to the cache), so the hit/miss patterns you see in the Venus cache simulator would be the same even if Venus simulated a write-back cache.  
+Exercise 1 - A Couple of Memory Access Scenarios  
+Task: Simulate the following scenarios and record the final cache hit rates with the program in cache.s. Try to reason out what the hit rate will be BEFORE running the code. After running each simulation, make sure you understand WHY you see what you see!  
+
+Do not hesitate to ask questions if you feel confused! This is perfectly normal and the staff is there to help you out!  
+
+THE FOLLOWING are good questions to ask yourself as you do these exercises (not checkoff questions):  
+
+How big is your cache block?  
+How many consecutive accesses (taking into account the step size) fit within a single block?  
+How much data fits in the WHOLE cache?  
+How far apart in memory are blocks that map to the same set (and could create conflicts)?  
+What is your cache’s associativity?  
+Where in the cache does a particular block map to?  
+When considering why a specific access is a miss or hit: Have you accessed this piece of data before? If so, is it still in the cache or not?  
+Scenario 1:
+Program Parameters: (set these by initializing the a registers in the code)
+
+Array Size (a0): 128 (bytes)
+Step Size (a1): 8
+Rep Count (a2): 4
+Option (a3): 0
+Cache Parameters: (set these in the Cache tab)
+
+Cache Levels: 1
+Block Size: 8
+Number of Blocks: 4
+Enable?: Should be green
+Placement Policy: Direct Mapped
+Associativity: 1 (Venus won’t let you change this, why?)
+Block Replacement Policy: LRU
+Tip: If it’s hard for you to visualize what’s getting pulled into the cache on each memory access just from staring at the code, try getting out some paper and a pencil. Write down what the tag:index:offset breakdown of the 32-bit addresses would be, figure out which memory addresses map to which set in the cache with the index bits, and see if that helps.
+
+Tasks
+What combination of parameters is producing the hit rate you observe? Write your answer in the form “[parameter A], [parameter B]” where the two parameters complete the following response: “Because [parameter A] in bytes is exactly equal to [parameter B] in bytes.” Note: Don’t forget that ‘cache size’ is a valid parameter that you implicitly set by choosing the block size and the # of blocks.
+What is our hit rate if we increase Rep Count arbitrarily? Write your answer as a decimal (e.g. “1.0” if the HR is 100%). (Checkoff Question 1: Why?)
+How could we modify one program parameter to increase our hit rate? Write your answer in the form “[parameter], [value]” where [parameter] is the program parameter you want to change and [value] is the value you want to change it to. Note: We don’t care if we access the same array elements. Just give us a program parameter modification that would increase the hit rate. However, do make sure that your proposed value is valid. (Checkoff Question 2: There are two program parameters you could’ve changed—can you list both?)
+Scenario 2:
+Program Parameters: (set these by initializing the a registers in the code)
+
+Array Size (a0): 256 (bytes)
+Step Size (a1): 2
+Rep Count (a2): 1
+Option (a3): 1
+Cache Parameters: (set these in the Cache tab)
+
+Cache Levels: 1
+Block Size: 16
+Number of Blocks: 16
+Enable?: Should be green
+Placement Policy: N-Way Set Associative
+Associativity: 4
+Block Replacement Policy: LRU
+Tasks
+How many memory accesses are there per iteration of the inner loop (not the one involving Rep Count)?
+What is the repeating hit/miss pattern? Write your answer in the form “MMHHMH” and so on, where your response is the shortest pattern that gets repeated. (Checkoff Question 3: Why? Now explain the hit rate in terms of the hit/miss pattern.)
+Keeping everything else the same, what does our hit rate approach as Rep Count goes to infinity? Try it out by changing the appropriate program parameter and letting the code run! Write your answer as a decimal. (Checkoff Question 4: Why does this happen?)
+You should have noticed that our hit rate was pretty high for this scenario, and your answer to the previous question should give you a good understanding of why. If you are not sure why, consider the size of the array and compare it to the size of the cache. Now, consider the following:
+
+Suppose we have a program that iterates through a very large array (i.e. way bigger than the size of the cache) Rep Count times. During each Rep, we map a different function to the elements of our array (e.g. if Rep Count = 1024, we map 1024 different functions onto each of the array elements, one per Rep). For reference, in this scenario, we just had one function (incrementation) and one Rep.
+
+Checkoff Question 5: Given the program described above, how can we restructure its array accesses to achieve a hit rate like that achieved in this scenario? Assume that each array element is to be modified independently of the others, i.e. it doesn’t matter if Rep k is applied to element arr[i+1] before Rep k is applied to element arr[i], etc.
+
+HINT: You do not want to iterate through the entire array at once because it’s much bigger than your cache. Doing so would reduce the amount of temporal locality your program exhibits, which makes cache hit rate suffer. We want to exhibit more locality so that our caches can take advantage of our predictable behavior. SO, instead, we should try to access **__** of the array at a time and apply all of the **_** to that **__** so we can be completely done with it before moving on, thereby keeping that **_** hot in the cache and not having to circle back to it later on! (The 1st, 3rd, and 4th blanks should be the same. It’s not some vocabulary term you should use to fill them in. It’s more of an idea that you should have.)
+
+Scenario 3:
+Program Parameters: (set these by initializing the a registers in the code)
+
+Array Size (a0): 128 (bytes)
+Step Size (a1): 1
+Rep Count (a2): 1
+Option (a3): 0
+Cache Parameters: (set these in the Cache tab)
+
+Cache Levels: 2
+NOTE: Make sure the following parameters are for the L1 cache! (Select L1 in the dropdown right next to the replacement policy)
+
+Block Size: 8
+Number of Blocks: 8
+Enable?: Should be green
+Placement Policy: Direct Mapped
+Associativity: 1
+Block Replacement Policy: LRU
+NOTE: Make sure the following parameters are for the L2 cache! (Select L2 in the dropdown right next to the replacement policy)
+
+Block Size: 8
+Number of Blocks: 16
+Enable?: Should be green
+Placement Policy: Direct Mapped
+Associativity: 1
+Block Replacement Policy: LRU
+Tasks
+What is the hit rate of our L1 cache? Our L2 cache? Overall? Write your answer in the form “[L1 HR], [L2 HR], [Overall HR]” where each hit rate is a decimal rounded to two places.
+How many accesses do we have to the L1 cache total? How many of them are misses? Write your answer in the form “[# of L1 accesses], [# of L1 misses]”.
+How many accesses do we have to the L2 cache total? HINT: Think about how this relates to the L1 cache (think about what the L1 cache has to do in order to make us access the L2 cache)?
+What program parameter would allow us to increase our L2 hit rate, but keep our L1 hit rate the same? (Checkoff Question 6: Why?)
+Do our L1 and L2 hit rates decrease (-), stay the same (=), or increase (+) as we (1) increase the number of blocks in L1, or (2) increase the L1 block size? Write your answer in the form “[1_L1], [1_L2], [2_L1], [2_L2]” (e.g. if I thought L1 will stay the same for both modifications while L2 will decrease for the first and increase for the second, I would answer “=, -, =, +”).
+Exercise 2 - Loop Ordering and Matrix Multiplication
+If you recall, matrices are 2-dimensional data structures wherein each data element is accessed via two indices. To multiply two matrices, we can simply use 3 nested loops, assuming that matrices A, B, and C are all n-by-n and stored in one-dimensional column-major arrays:
+
+for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+        for (int k = 0; k < n; k++)
+            C[i+j*n] += A[i+k*n] * B[k+j*n];
+
+
+Matrix multiplication operations are at the heart of many linear algebra algorithms, and efficient matrix multiplication is critical for many applications within the applied sciences.
+
+In the above code, note that the loops are ordered i, j, k. If we examine the innermost loop (the one that increments k), we see that it…
+
+moves through B with stride 1
+moves through A with stride n
+moves through C with stride 0
+Remember: To compute the matrix multiplication correctly, the loop order doesn’t matter.
+
+BUT, the order in which we choose to access the elements of the matrices can have a large impact on performance. Caches perform better (more cache hits, fewer cache misses) when memory accesses take advantage of spatial and temporal locality, utilizing blocks already contained within our cache. Optimizing a program’s memory access patterns is essential to obtaining good performance from the memory hierarchy.
+
+Take a glance at matrixMultiply.c. You’ll notice that the file contains multiple implementations of matrix multiply with 3 nested loops.
+
+Task: Think about what the strides are for the nested loops in the other five implementations.
+
+Note that the compilation command in the Makefile uses the ‘-O3’ flag. It is important here that we use the ‘-O3’ flag to turn on compiler optimizations. Compile and run the code with the following command, and then answer the questions below:
+
+This will run some matrix multiplications according to the six different implementations in the file, and it will tell you the speed at which each implementation executed the operation. The unit “Gflops/s” reads, “Giga-floating-point-operations per second.” THE BIGGER THE NUMBER THE FASTER IT IS RUNNING!
+
+Tasks
+Which 2 orderings perform best for these 1000-by-1000 matrices? Write your answer in the form “[Ordering1], [Ordering2]” (e.g. “ijk, ikj”). (Checkoff Quesion 1: Why?)
+Which 2 orderings perform the worst? (Checkoff Question 2: Why?)
+Checkoff Question 3: How does the way we stride through the matrices with respect to the innermost loop affect performance?
+
+Exercise 3 - Cache Blocking and Matrix Transposition
+NOTE: For this exercise, using the hive machines is recommended! If you are in one of the Soda Lab 27- rooms, you can still ssh from the instructional machines into the hive machines. This is because the hive machines have historically run the tests twice as fast.
+
+Matrix Transposition
+Sometimes, we wish to swap the rows and columns of a matrix. This operation is called a “transposition” and an efficient implementation can be quite helpful while performing more complicated linear algebra operations. The transpose of matrix A is often denoted as AT.
+
+
+
+Cache Blocking
+In the above code for matrix multiplication, note that we are striding across the entire A and B matrices to compute a single value of C. As such, we are constantly accessing new values from memory and obtain very little reuse of cached data! We can improve the amount of data reuse in the caches by implementing a technique called cache blocking. More formally, cache blocking is a technique that attempts to reduce the cache miss rate by further improving the temporal and/or spatial locality of memory accesses. In the case of matrix transposition, we consider performing the transposition one block at a time.
+
+
+
+Things to note: In the above image, we transpose each submatrix Aij of matrix A into its final location in the output matrix, one submatrix at a time. It is important to note that transposing each individual subsection is equivalent to tranposing the entire matrix.
+
+Since we operate on and finish transposing each submatrix one at a time, we consolidate our memory accesses to that smaller chunk of memory when transposing that particular submatrix, which increases the degree of temporal (and spatial) locality that we exhibit, which makes our cache performance better, which makes our program run faster.
+
+This (if implemented correctly) will result in a substantial improvement in performance. For this lab, you will implement a cache blocking scheme for matrix transposition and analyze its performance.
+
+Your task is to implement cache blocking in the transpose_blocking() function inside transpose.c. You may NOT assume that the matrix width (n) is a multiple of the blocksize. By default, the function does nothing, so the benchmark function will report an error. After you have implemented cache blocking, you can run your code by typing:
+
+make ex3
+./transpose <n> <blocksize>
+
+
+where n, the width of the matrix, and blocksize are parameters that you will specify. You can verify that your code is working by setting n\=10000 and blocksize\=33. The blocked version should finish significantly faster.
+
+The following section is meant to serve as a guideline for if you have no idea how to start. If you think you know how to use the parameter blocksize, then just jump right in and get started.
+
+Some tips to get started:
+
+Start by looking at the transpose_naive function included in the file. Notice that the index y strides vertically across the WHOLE src matrix in one iteration of the outer loop before resetting to 0. Another way to say this is that the index x only updates after y is done going from 0 all the way to n. This is the behavior which we want to change. We want to step not stride across the array indices.
+
+TL;DR: fill out dst square chunks at a time, where each square chunk is of dimension blocksize by blocksize.
+
+Instead of updating x only when y goes through ALL of 0 through n, we want to jump down to the next row of dst after we stride across the width (horizontal axis) of just a single block. How big is a block? Exactly the number of integers specified by the parameter blocksize. In addition, we only want to stride vertically through the height (vertical axis) of a block before we move on to the next block. We don’t want to make x stride all the way down n rows of dst before we move on to the next block.
+
+Hint: A standard solution needs 4 (four) for loops.
+
+Finally, since we can’t assume that n is a multiple of blocksize, the final block column for each block row will be a little bit cut-off, i.e. it won’t be a full blocksize by blocksize square. In addition, the final block row will all be truncated. To fix this problem, you can do the exercise assuming that n is a multiple of the blocksize and then add in a special case somewhere to do nothing when your indices reach out of bounds of the array.
+
+Once your code is working, complete the following exercises and record your answers.
+
+Tasks
+Record your results and responses to the Checkoff Questions below in exercise3.txt, but note that the file itself is not autograded.
+
+Part 1 - Changing Array Sizes
+Fix the blocksize to be 20, and run your code with n equal to 100, 1000, 2000, 5000, and 10000. Record your output in exercise3.txt.
+
+Checkoff Question 1: At what point does cache blocked version of transpose become faster than the non-cache blocked version?
+
+Checkoff Question 2: Why does cache blocking require the matrix to be a certain size before it outperforms the non-cache blocked code?
+
+(Sanity check: the blocked version isn’t faster than the naive version until the matrix size is sufficiently big.)
+
+Part 2 - Changing Blocksize
+Fix n to be 10000, and run your code with blocksize equal to 50, 100, 500, 1000, 5000. Record your output in exercise3.txt.
+
+Checkoff Question 3: How does performance change as blocksize increases? Why is this the case?
+
+(Sanity check: as you increase blocksize, the amount of speedup should change in one direction, then change in the other direction.)
+
+Notice that in neither of the last two exercises did we actually know the cache parameters of our machine. We just made the code exhibit a higher degree of locality, and this magically made things go faster! This tells us that caches, regardless of their specific parameters, will always benefit from operating on code which exhibits a high degree of locality.
+
+Checkoff
+Please submit to the Lab Autograder assignment.
+
+Note that the autograder is whitespace and case insensitive, but otherwise very simple and thus incapable of recognizing typos or misformatted answers.
+
+The autograder looks for the files exercise1.txt, exercise2.txt, transpose.c, and transpose.h (which you should not change).
+
+All 3 exercises have Checkoff Questions that you can use to guide your discussion with the TA during your checkoff appointment. It is highly recommended to record your responses to the Checkoff Questions (and your performance results) in the provided spaces so you don’t have to dig around for them during the appointment.
+
+We believe this lab is essential to understanding caches, so please take advantage of your TA’s presence when getting checked off! Ask any questions you may have, even if they’re just clarifications. You may learn something you missed your first pass through.
+
+Previous
+Lab06
+Next
+Lab08
+Objectives:  目标：
+Setup  设置
+Review - Hit and Miss Policies
+评价 - 时灵时不灵的政策
+Exercise 1 - A Couple of Memory Access Scenarios
+练习 1 - 几个内存访问场景
+Scenario 1:  
+Scenario 2:  
+Scenario 3:  
+Exercise 2 - Loop Ordering and Matrix Multiplication
+练习 2 - 循环排序和矩阵乘法
+Tasks  任务
+Exercise 3 - Cache Blocking and Matrix Transposition
+练习 3 - 缓存阻塞和矩阵转置
+Matrix Transposition  矩阵转置
+Cache Blocking  缓存阻塞
+Part 1 - Changing Array Sizes
+第一部分 - 更改数组大小
+Part 2 - Changing Blocksize
+第二部分 - 更改块大小
+Checkoff  检查点
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab08
+Lab08  
+Lab 8  实验八
+Deadline: EOD (End of Day) Friday, November 6th  
+
+Objectives:  目标：
+The student would explore the workings of virtual memory, specifically the TLB and the Page Table.  
+The student would be able to analyze TLB hit rate and Page Table hit rate and figure out what accesses optimize these values.  
+Important:  
+Per the relief package, you just need to show up to “check-in” with your TA to receive credit for the lab. The AG and checkoff questions mentioned in the lab are optional but highly recommended given that they are still in scope for the final.  
+
+Setup  设置
+Pull the lab 8 files from the lab starter repository with  
+
+Write your answers in the provided answers.txt file. For numerical answers, write the number instead of spelling it out (e.g. “7” instead of “seven”). The Checkoff Question lines are ignored by the autograder and there for your convenience. The autograder assumes that the original formatting will not be changed, so please don’t add additional lines, switch existing lines, or otherwise modify the current formatting.  
+
+For this lab we will mostly be using the virtual memory simulation features of Camera, a cache and virtual memory simulator. You may also find the cache simulations interesting, however we won’t be working with those here. Unfortunately, Camera is known to have issues when trying to run it on the Hive or Linux machines, so it’s recommend to download Camera from here, and simply double click on the jar file to run it on your own (non-Linux) laptop. If you’re on a Mac, you may need to go to “Security & Privacy” in your settings and click “Open Anyway” to allow Camera to run. Some displays don’t seem to play nice with the standard Camera app, if the values in memory are all squished together, try running this version of Camera. If you are unable to find a way to get Camera working on a machine, please partner up with someone who does.  
+
+Once Camera opens up, select the virtual memory option to open a visualization of the virtual memory system. In the top left you can see the contents of physical memory. Just below that is a listing of all the pages of virtual memory for this process. To the right of these items are the contents of the TLB and the Page Table. At this point these should all be empty as we haven’t done anything yet. Read about the statistics of your memory system in the “PROGRESS UPDATE” box at the bottom of the window. This area will keep you updated on your status through the simulation as it progresses. You can move the simulation forward, backward or start it over from the beginning using the buttons to the right of the “PROGRESS UPDATE” box.  
+
+Exercise 0 - Sanity Check  
+Before you continue, MAKE SURE THAT YOU OPENED THE VM SIMULATOR AND NOT THE CACHE SIMULATOR.  
+
+Exercise 1 - Working with CAMERA  
+Click the button labeled “Auto Generate Add. Ref. Str.” at the right-hand side of the window. This will generate a set of ten address references. You can think of these as a series of RISC-V “load word” instructions reading from the memory address specified. Click the button labeled “Next” to begin the simulation.  
+
+For the rest of this exercise you are at the mercy of the “PROGRESS UPDATE” box. After each click of the “Next” button examine the contents of the box and the current state of the memory system. Try to really get an understanding of what is going on in the TLB, the Page Table, and Physical Memory at each step.  
+
+Once you have reached the end of the simulation note the number of TLB Hits and Misses and Page Hits and Faults. Write these numbers down, along with the sequence of memory accesses used to show to your TA during checkoff.  
+
+Checkpoint  检查点
+Given the way the address was broken down, how big (in words) are the pages in this model? Leave out the units in your answer (e.g. 4 instead of 4 words).  
+How many TLB Hits and Misses did we have for the randomly generated set of ten addresses? What about for Page Hits and Page Faults? Your answer should be a comma separated list (e.g. 1, 2, 3, 4).  
+Did you have any Page Hits? (Why?) Can you think of a set of ten addresses that would result in a Page Hit? Your answer should be two [yes/no]’s separated by a comma.  
+Checkoff Questions  
+
+Explain the process by which we turn a virtual address into a physical address for the very first access (emphasizing on TLB Misses and Page Faults).  
+Why does the physical address only have 2 bits for the PPN while the virtual address has 3 bits for the VPN?  
+Exercise 2 - Misses  
+Now that you’ve seen what a random workload looks like in the VM system let’s try creating a custom workload with a specific property. Your goal for this exercise is to create a workload of ten memory accesses that will cause ten TLB misses and ten Page Faults. You should be able to come up with such a workload on paper, but then you should run it in CAMERA to verify your work. You can specify a custom workload in CAMERA by clicking the button labeled “Self Generate Add. Ref. Str.” and entering in the addresses you want to reference one at a time.  
+
+Checkpoint  检查点
+Write down your ten memory accesses. The answer should be formatted as a comma separated list of hex values (e.g. 00, 01, 02, 03, 04, 05, 06, 07, 08, 09).  
+Exercise 3 - Fixing our Faults  
+Given your sequence of memory accesses from Exercise 2, can you find a change to a single parameter (e.g. TLB Size, Physical Memory Size, Virtual Memory Size, Page Size) that would result in the same number (ten) of TLB misses but result in fewer than ten page faults?  
+
+Checkpoint  检查点
+Write down a parameter which if changed by itself (while all other parameters stay the same) would result in ten TLB misses but fewer than ten page faults.  
+Exercise 4 - Bringing it All Together  
+We used VMSIM, another Virtual Memory simulator, to create this question. You have two options for this exercise.  
+
+Watch this webm of a VMSIM simulation.  
+Use the appletviewer command in your Terminal like so (doesn’t work on Hive):  
+$ appletviewer https://denninginstitute.com/workbenches/vmsim/vm.html 
+
+
+Observe what is happnening and answer the following questions:
+
+What is different about the setup of the system in this question as compared to the setup in CAMERA? In particular, what are P1, P2, P3, and P4? If you watch closely you’ll see that this simulation reports a much higher percentage of TLB misses than random runs on CAMERA did. Why might this be? (If you have trouble following the simulation, use the appletviewer and turn down the speed using the slider on the bottom right.)
+
+Checkoff Question
+
+Explain why there is a much higher percentage of TLB misses in this simulation
+Checkoffs
+Please submit to the Lab Autograder assignment.
+
+Note that the autograder is whitespace and case insensitive, but otherwise very simple and thus incapable of recognizing typos or misformatted answers.
+
+The autograder looks for the answers.txt file.
+
+During checkoffs, be prepared to go over the following questions with your TA:
+
+Exercise 1
+
+Explain the process by which we turn a virtual address into a physical address for the very first access (emphasizing on TLB Misses and Page Faults).
+Why does the physical address only have 2 bits for the PPN while the virtual address has 3 bits for the VPN?
+Exercise 4
+
+Explain why there is a much higher percentage of TLB misses in this simulation
+Previous
+Lab07
+Next
+Lab09
+Lab 8  实验 8
+Objectives:  目标：
+Important:  重要提示：
+Setup  设置
+Exercise 0 - Sanity Check  
+Exercise 1 - Working with CAMERA  
+Checkpoint  检查点
+Exercise 2 - Misses  
+Checkpoint  检查点
+Exercise 3 - Fixing our Faults  
+Checkpoint  检查点
+Exercise 4 - Bringing it All Together  
+Checkoffs  
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab09
+Lab 9  第九课
+Lab 09  第九课 09
+Objectives:  目标：
+TSW learn about and use various SIMD functions to perform data level parallelism  
+TSW write code to SIMD-ize certain functions  
+TSW learn about loop-unrolling and why it works  
+Setup  设置
+Pull Lab 09 files from the lab starter repository with  
+
+Disclaimer  
+NOTE THAT ALL CODE USING SSE INSTRUCTIONS IS GUARANTEED TO WORK ON THE HIVE MACHINES AND IT MAY NOT WORK ELSEWHERE  
+
+Many newer processors support SSE intrinsics, so it is certainly possible that your machine will be sufficient, but you may not see accurate speedups. Ideally, you should ssh into one of the hive machines to run this lab. Additionally, many of the performance characteristics asked about later on this lab are more likely to show up on the Hive.  
+
+Exercise 1 - Familiarize Yourself with the SIMD Functions  
+Given the large number of available SIMD intrinsics we want you to learn how to find the ones that you’ll need in your application.  
+
+For this mini-exercise, we ask you to look at the Intel Intrinsics Guide. Open this page and once there, click the checkboxes for everything that begins with “SSE”.  
+
+Look through the possible instructions and syntax structures, then try to find the 128-bit intrinsics for the following operations:  
+
+Four floating point divisions in single precision (i.e. float)  
+Sixteen max operations over signed 8-bit integers (i.e. char)  
+Arithmetic shift right of eight signed 16-bit integers (i.e. short)  
+Hint: Things that say “epi” or “pi” deal with integers, and those that say “ps” or “pd” deal with s ingle p recision and d ouble p recision floats.  
+
+You can visualize how the vectors and the different functions work together by inputting your code into the code environment at this link! Another interesting tool that might help you understand the behavior of SIMD instructions is the Compiler Explorer project. It can also provide a lot of insights when you need to optimize any code in the future.  
+
+General advice on working with SIMD instructions:  
+
+Be ware of memory alignment. For example, _m256d _mm256_load_pd (double const * mem_addr) would not work with unaligned data – you would need _m256d _mm256_loadu_pd. Meanwhile, it is almost always desireable to keep your data aligned (can be achieved using special memory allocation APIs). In fact, when the data is aligned, aligned load/store will give identical performance to an aligned store. Aligned loads can be folded into other operations as a memory operand which reduces code size and throughput slightly. Modern CPUs have very good support for unaligned loads, but there’s still a significant performance hit when a load crosses a cache-line boundary.  
+Recall various CPU pipeline hazards you have learned earlier this semester. Data hazards can drastically hurt performance. That being said, you may want to check data dependencies in adjacent SIMD operations if not getting the desired performance.  
+Exercise 2 - Writing SIMD Code  
+Common Mistakes  
+The following are bugs that the staff have noticed which were preventing students from passing the tests (bold text is what you should not do):  
+
+Trying to store your sum vector into a long long int array. Use an int array. Side note: why?? The return value of this function is indeed a long long int, but that’s because an int isn’t big enough to hold the sum of all the values across all iterations of the outer loop. However, it is big enough to hold the sum of all the values across a single iteration of the outer loop. This means you’ll want to store your sum vector into an int array after every iteration of the outer loop and add the total sum to the final result result.  
+Re-initializing your sum vector. Make sure when you add to your running sum vector; you are not declaring a new sum vector!!  
+Forgetting the CONDITIONAL in the tail case. What condition have we been checking before adding something to the sum?  
+Adding to an UNINITIALIZED array. If you add stuff to your result array without initializing it, you are adding stuff to garbage, which makes the array still garbage! Using storeu before adding stuff is okay though.  
+We’ve got one file simd.c that has some code to sum the elements of a really big array. It’s a minor detail that it randomly does this 1 << 16 times… but you don’t need to worry about that. We also pince the execution of the code between two timestamps (that’s what the clock() function does) to measure how fast it runs! The file test_simd.c is the one which will have a main function to run the sum functions.  
+
+Task  
+We ask you to vectorize/SIMDize the code in simd.c to speed up the naive implementation of sum().  
+
+You only need to vectorize the inner loop with SIMD! You will also need to use the following intrinsics:  
+
+__m128i _mm_setzero_si128() - returns a 128-bit zero vector  
+__m128i _mm_loadu_si128(__m128i *p) - returns 128-bit vector stored at pointer p  
+__m128i _mm_add_epi32(__m128i a, __m128i b) - returns vector (a_0 + b_0, a_1 + b_1, a_2 + b_2, a_3 + b_3)  
+void _mm_storeu_si128(__m128i *p, __m128i a) - stores 128-bit vector a into pointer p  
+__m128i _mm_cmpgt_epi32(__m128i a, __m128i b) - returns the vector (a_i > b_i ? 0xffffffff : 0x0 for i from 0 to 3). AKA a 32-bit all-1s mask if a_i > b_i and a 32-bit all-0s mask otherwise  
+__m128i _mm_and_si128(__m128i a, __m128i b) - returns vector (a_0 & b_0, a_1 & b_1, a_2 & b_2, a_3 & b_3), where & represents the bit-wise and operator  
+Start with the code in sum() and use SSE intrinsics to implement the sum_simd() function.  
+
+How do I do this?  
+
+Recall that the SSE intrinsics are basically functions which perform operations on multiple pieces of data in a vector in parallel. This turns out to be faster than running through a for loop and applying the operation once for each element in the vector.  
+
+In our sum function, we’ve got a basic structure of iterating through an array. On every iteration, we add an array element to a running sum. To vectorize, you should add a few array elements to a sum vector in parallel and then consolidate the individual values of the sum vector into our desired sum at the end.  
+
+Hint 1: __m128i is the data type for Intel’s special 128-bit vector. We’ll be using them to encode 4 (four) 32-bit ints.  
+Hint 2: We’ve left you a vector called _127 which contains four copies of the number 127. You should use this to compare with some stuff when you implement the condition within the sum loop.
+Hint 3: DON’T use the store function (_mm_storeu_si128) until after completing the inner loop! It turns out that storing is very costly and performing a store in every iteration will actually cause your code to slow down. However, if you wait until after the outer loop completes you may have overflow issues.
+Hint 4: It’s bad practice to index into the __m128i vector like they are arrays. You should store them into arrays first with the storeu function, and then access the integers elementwise by indexing into the array.
+Hint 5: READ the function declarations in the above table carefully! You’ll notice that the loadu and storeu take __m128i* type arguments. You can just cast an int array to a __m128i pointer. Alternatively, you could skip the typecast at the cost of a bunch of compiler warnings.
+To compile and run your code, run the following commands:
+
+Sanity check: The naive version runs at about 7 seconds on the hive machines, and your SIMDized version should run in about 1-2 seconds.
+
+Exercise 3 - Loop Unrolling
+Concept Time! Another tactic used to increase performance is to unroll our for loops! By performing more operations per iteration of the for loop, we have to loop less and not have to waste as many cycles (think about why we would have to waste some cycles?). Theoretically, code would be faster if we didn’t create loops and just copy pasted the loop n times, but that’s not a very pretty function.
+
+For example, consider this very simple example that adds together the first n elements of an array arr:
+
+int total = 0;
+for (int i = 0; i < n; i++) {
+    total += arr[i];
+}
+
+
+The corresponding assembly code might look something like this:
+
+        add t0, x0, x0
+        add t1, x0, x0 // Initialize loop counter
+loop:   beq t0, a1, end // Assume register a1 contains the size n of the array
+        slli t2, t1, 2
+        add t2, t1, a0 // Assume register a0 contains a pointer to the beginning of the array
+        lw t3, 0(t2) // Load arr[i] into t3
+        add t0, t3, t0 // total += arr[i]
+        addi t1, t1, 1 // Increment the loop counter
+        jal x0, loop
+end:    ...
+
+
+If we unroll the loop 4 times, this would be our equivalent code, with a tail case for the situations where n is not a multiple of 4:
+
+int total = 0;
+for (int i = 0; i < n / 4 * 4; i+=4) {
+    total += arr[i];
+    total += arr[i + 1];
+    total += arr[i + 2];
+    total += arr[i + 3];
+}
+
+for (i = n / 4 * 4; i < n; i++) {
+    total += arr[i];
+}
+
+
+For the unrolled code, the corresponding assembly code might look something like this:
+
+      add t0, x0, x0
+      add t1, a1, x0 // Assume register a1 contains the size n of the array
+      srli t1, t1, 2
+      slli t1, t1, 2 // Find largest of multiple 4 <= n
+      add t2, x0, x0 // Initialize loop counter
+loop: beq t2, t1, tail
+      slli t3, t2, 2
+      add t3, t3, a0 // Assume register a0 contains a pointer to the beginning of the array
+      lw t4, 0(t3) // Load arr[i] into t3
+      add t0, t4, t0 // total += arr[i]
+      lw t4, 4(t3) // Load arr[i + 1] into t3
+      add t0, t4, t0
+      lw t4, 8(t3), t0 // Load arr[i + 2] into t3
+      add t0, t4, t0
+      lw t4, 12(t3), // Load arr[i + 3] into t3
+      add t0, t4, t0
+      addi t2, t2, 4 // Increment the loop counter
+      jal x0, loop
+tail: beq t2, a1, end
+      slli t3, t2, 2
+      lw t4, 0(t3)
+      add t0, t4, t0
+      addi t2, t2, 1
+end: ...
+
+
+To obtain even more performance improvement, carefully unroll the SIMD vector sum code that you created in the previous exercise to create sum_simd_unrolled(). This should get you a little more increase in performance from sum_simd (a few fractions of a second). As an example of loop unrolling, consider the supplied function sum_unrolled()
+
+Task
+Within simd.c, copy your sum_simd() code into sum_simd_unrolled() and unroll it 4 (four) times. Don’t forget about your tail case!
+
+To compile and run your code, run the following commands:
+
+Checkoff
+Please submit to the Lab Autorgrader assignment.
+
+In your check-in, feel free to explain your implementation of sum_simd() and sum_simd_unrolled(). How much faster did the SIMD code run over the naive implementation? How much of a performance boost did unrolling provide (and why did it increase performance)?
+
+Previous
+Lab08
+Next
+Lab10
+Lab 09  实验 09
+Objectives:  目标：
+Setup  设置
+Disclaimer  免责声明
+Exercise 1 - Familiarize Yourself with the SIMD Functions  
+Exercise 2 - Writing SIMD Code  
+Common Mistakes  
+Task  任务
+Exercise 3 - Loop Unrolling  
+Task  任务
+Checkoff  检查点
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab10
+Lab 10
+Objectives:  目标：
+Learn about basic OpenMP directives.  
+Write code to learn two ways of how #pragma omp for could be implemented. Learn about false sharing.  
+Larn about basic multi-processing programming.  
+Setup  设置
+Pull the Lab 10 files from the lab starter repository with  
+
+Part 1: Multi-threading programming using OpenMP  
+OpenMP stands for Open specification for Multi-Processing. It is a framework that offers a C interface. It is not a built-in part of the language – most OpenMP features are directives to the compiler.  
+
+Benefits of multi-threaded programming using OpenMP include:  
+
+Very simple interface allows a programmer to separate a program into serial regions and parallel regions.  
+Convenient synchronization control (data race bugs in POSIX threads are very hard to trace).  
+In this lab, we will practice some basic usage of OpenMP. Feel free to build and use OpenMP on your own machine, but it would be the easiest to work on hive machines as they have OpenMP built and ready for use.  
+
+Exercise 1 - OpenMP Hello World  
+Consider the implementation of Hello World (hello.c):  
+
+int main() {
+    #pragma omp parallel
+    {
+        int thread_ID = omp_get_thread_num();
+        printf(" hello world %d\n", thread_ID);
+    }
+}
+
+
+This program will fork off the default number of threads and each thread will print out “hello world” in addition to which thread number it is. You can change the number of OpenMP threads by setting the environment variable OMP_NUM_THREADS or by using the omp_set_num_threads function in your program. The #pragma tells the compiler that the rest of the line is a directive, and in this case it is omp parallel. omp declares that it is for OpenMP and parallel says the following code block (what is contained in { }) can be executed in parallel. Give it a try: ` make hello && ./hello `  
+
+If you run ./hello a couple of times, you should see that the numbers are not always in numerical order and will most likely vary across runs. This is because within the parallel region, OpenMP does the code in parallel and as a result does not enforce an ordering across all the threads. It is also vital to note that the variable thread_ID is local to a specific thread and not shared across all threads. In general with OpenMP, variables declared inside the parallel block will be private to each thread, but variables declared outside will be global and accessible by all the threads.  
+
+You will complete the next two exercises by modifying the functions inside omp_apps.c.  
+
+Exercise 2 - Vector Addition  
+Vector addition is a naturally parallel computation, so it makes for a good first exercise. The v_add functions inside omp_apps.c will return the array that is the cell-by-cell addition of its inputs x and y. A first attempt at this might look like:  
+
+void v_add(double* x, double* y, double* z) {
+    #pragma omp parallel
+    {
+        for(int i=0; i<ARRAY_SIZE; i++)
+            z[i] = x[i] + y[i];
+    }
+}
+
+
+You can run this (make v_add followed by ./v_add) and the testing framework will vary the number of threads and time it. You will see that this actually seems to do worse as we increase the number of threads. The issue is that each thread is executing all of the code within the omp parallel block, meaning if we have 8 threads, we will actually be adding the vectors 8 times. Rather than have each thread run the entire for loop, we need to split up the for loop across all the threads so each thread does only a portion of the work.  
+
+Your task is to optimize v_add.c (speedup may plateau as the number of threads continues to increase). To aid you in this process, two useful OpenMP functions are:  
+
+int omp_get_num_threads();
+int omp_get_thread_num();
+The function omp_get_num_threads() will return how many threads there are in a omp parallel block, and omp_get_thread_num() will return the thread ID.  
+
+Divide up the work for each thread through two different methods (write different code for each of these methods):  
+
+First task, slicing: have each thread handle adjacent sums: i.e. Thread 0 will add the elements at indices i such that i % omp_get_num_threads() is 0, Thread 1 will add the elements where i % omp_get_num_threads() is 1, etc.  
+Second task, chunking: if there are N threads, break the vectors into N contiguous chunks, and have each thread only add that chunk (like the figure above).  
+Hints:  
+
+Use the two functions we listed above somehow in the for loop to choose which elements each thread handles.  
+You may need a special case to prevent going out of bounds for v_add_optimized_chunks. Don’t be afraid to write one.  
+Thinking about false sharing–read more here and here.  
+For this exercise, we are asking you to manually split the work amongst threads since this is a common pattern used in software optimization. The designers of OpenMP actually made the #pragma omp for directive to automatically split up independent work. Here is the function rewritten using it. You may NOT use this directive in your solution to this exercise.  
+
+void v_add(double* x, double* y, double* z) {
+    #pragma omp parallel for 
+    for(int i=0; i<ARRAY_SIZE; i++)
+        z[i] = x[i] + y[i];
+}
+
+
+Test the performance of your code with make v_add && ./v_add  
+
+Exercise 3 - Dot Product  
+The next task is to compute the dot product of two vectors. At first glance, implementing this might seem not too different from v_add, but the challenge is how to sum up all of the products into the same variable (reduction). A sloppy handling of reduction may lead to data races: all the threads are trying to read and write to the same address simultaneously. One solution is to use a critical section. The code in a critical section can only be executed by a single thread at any given time. Thus, having a critical section naturally prevents multiple threads from reading and writing to the same data, a problem that would otherwise lead to data races. One way to avoid data races is to use the critical primitive provided by OpenMP. An implementation, dotp_naive in omp_apps.c, protects the sum with a critical section.
+
+Try out the code (make dotp &&./dotp). Notice how the performance gets much worse as the number of threads goes up? By putting all of the work of reduction in a critical section, we have flattened the parallelism and made it so only one thread can do useful work at a time (not exactly the idea behind thread-level parallelism). This contention is problematic; each thread is constantly fighting for the critical section and only one is making any progress at any given time. As the number of threads goes up, so does the contention, and the performance pays the price. Can we reduce the number of times that each thread needs to use a critical section?
+
+Tasks:
+
+Fix this performance problem without using the reduction keyword in dotp_manual_optimized. Remember that we want to reduce the number of times each thread enters the critical section.
+Next, fix this problem using OpenMP’s built-in reduction keyword in dotp_reduction_optimized.(Note that your code should no longer contain #pragma omp critical.)
+Part 2: Intro to multi-processing programming
+OpenMP is a convenient way to do multi-threading computation. Another common task level parallelism approach is multiprocessing. A thread is a single execution sequence that can be managed independently by the operating system. A process is an instance of a computer program that is being executed. It consists of an address space and one or more threads of control. It is the main abstraction for protection provided by the operating system kernel.
+
+The key differences between multi-threading and multiprocessing is that in multi-threading, threads share the same address space, whereas in multiprocessing, each process has its own address space. Performance wise, this difference leads to two observations:
+
+Threads have lower overhead (low memory and other resource footprint), and the cost of communication between threads is low as threads can only read/write to memory addresses in the same address space.
+Sharing memory means we have to be careful about concurrency issues: when multiple threads can read/write to the same memory address, it can be hard to reason about correctness.
+ 
+
+(credit to Julia Evans)
+
+Background - Http Web Server and Multi-processing
+In the second part of this lab, we will have a very basic but fun practice on writing multi-processing programs.
+
+The fork syscall is used to create a new process by duplicating the calling process. If everything works fine, calling fork should return the process ID of the child process being created to the calling process, and 0 to the newly created process (which is usually refered to as the child process). A negative value is returned if the creation of a child process failed. Read more.
+
+For example, the following code:
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+int main () {
+  pid_t child_pid;
+  printf("Main process id = %d (parent PID = %d)\n",
+(int) getpid(), (int)  getppid());
+  child_pid = fork();
+  if (child_pid != 0)
+printf("Parent: child's process id = %d\n", child_pid);
+  else
+printf("Child:  my process id = %d\n", (int) getpid()); 
+  return 0;
+}
+
+
+may output:
+
+Main process id = 9075 (parent PID = 32146)
+Parent: child's process id = 9076
+Child:  my process id = 9076
+
+
+Calling fork() creates a child process. It might come as a surprise to you that this function returns to both the parent and the child process - the parent process gets the process ID of the child process being created, while 0 is returned to the child process. Thus, the parent and child processes diverge at the if block.
+
+Make sure you understand this code snippet before proceeding.
+
+The program that we want you to parallelize is a basic HTTP web server. A web server creates a listening socket and binds it to a port, then waits for a client to connect to the port. Once a connection reqeust reaches, the server obtains a new connection socket, reads in and parses the HTTP request, then responds to the request by serving the requested file. For simplicity, the server program that we will be working with only reponds to “GET” requests.
+
+A serial version is already implemented for you. To start, run make server_basic && ./server_basic from the command line. This server program will run locally using lab10/files/ as the serve file directory, and listen to port 8000 by default (this can be changed using a command line argument, for example, ./server_basic --port 8080). There are two ways to make a request: either open a browser and navigate to localhost:8000/[request filename] or use the curl program: run curl localhost:8000/[request filename] from the command line. (Type man curl for more usage of curl.)
+
+For our purpose here, the details of the server implementation can largely be ignored, but the function server_forever defined in server_utils.c needs your optimization. In this current implementation, the server program operates on a single process. Once the main process gets a request, it will work on serving the request before coming back to greet the next request. Therefore, if serving one request takes more than a blink – best luck on clients who need to be served later.
+
+If the requested filename refers to a directory, the server first looks for the presence of an index.html file. If that is found, that webpage will be served. Otherwise it will present links to each file under the requested directory.
+
+This server also offers two twists:
+
+If the request is localhost:8000/report, it will run the dotp program and serve the result in text. The ARRAY_SIZE parameter has a default value set in omp_apps.h, but you can change it from the command line: ./server_basic --dotp-size 10000000.
+It implements the routing feature. If the request is /filter/[filename].bmp, it will run a very simple image processing program (specifially, the sobel edge detector on the requested image, and return a html web page that display the original image and the filtered image together. A few sample bmp images are provided under files directory. For example, navigating to localhost:8000/girl.bmp should get the original picture, but if you navigate to localhost:8000/filter/girl.bmp, your browser should render the following:
+sample
+
+Notes
+If you do this exercise on a hive machine using ssh and want to make client requests using your local browser (sadly we can’t just go to Soda Hall these days…), say you ssh to [login]@hive9.cs.berkeley.edu and start the server using default setup (server listening to 127.0.0.1:8000), you can reqeust from browser using url http://hive9.cs.berkeley.edu:8000/. And, of course, you can also use curl from the command line.
+The bmp library we use here is very basic. It lacks many relatively complicated padding features necessary to work with images of any sizes. In fact, the filter algorithm will only work nicely on bmp images that have dimensions of powers of 2. Don’t be too surprised at seeing funky results if you try other image sources.
+Optional:
+
+The sobel edge detector is implemented for you. Can you optimize it using OpenMP?
+(Feel free to implement other image processing algorithms and play with the server any way you like.)
+
+To simulate a costly computation, the request handler is made to wait 5 seconds after it finishes serving the requested file. You can easily observe this inefficiency by making two consecutive requests – the second one will halt for a while before getting a response.
+
+Can we improve the server with some parallelism?
+
+Exercise:
+Instead of serving a request with the main process running the server program, always fork a new child process to do that and let the parent process continue to greet new requests. The fork mechanics demonstrated in the sample code above should be adequate to help you finish the implementation.
+
+The created child process has its own set of system resources (address space, registers, a stack, open handles to system objects, security context, etc). You need to explicitly clean up and recycle upon finishing the computation task. Take a look at the exit syscall.
+
+To test your optimization, run make server_process && ./server_process, then make two consecutive requests to any file, verify that the second request is immediately served. We provide a simple timer script, timer.sh, to automate this process.
+
+Run the compiled and linked server binary (either server_basic or server_process in one terminal. Then, on another terminal (ssh to hive as needed), run ./timer.sh. The script would report the amount of time it takes to serve the requested files.
+
+The performance gain of the forking implementation should be very impressive.
+
+Note: Forked child processes are not guaranteed to be killed when you kill the parent process from command line by hitting Ctrl+C. This may lead to a side effect that the default port 8000 is occupied and you won’t be able to restart your server program listening to the same port. The way to do it properly is out of scope for the purpose of 61C, so we have implemented this for you in the starter code. (You will learn to resolve issues like such in CS162, but you’re encouraged to figure out what the starter code actually does on your own). We provide a work around here: If a port you attempt to use is occupied by a zombie process, you can kill it using command fuser -k [port#]/tcp.
+
+Another work around is to use a different port number by passing in a command line argument, for example, ./server_process --port 8080.
+
+(FYI: forking a process to respond to a request is probably not the best parallelism approach – the modern solution is to use a thread pool where the overhead is much lower and you have convenient control over server load.)
+
+Speedup Requirements
+The lab autograder tests are slightly modified versions of the tests you have locally. In addition to correctness, it looks for some basic improvements in performance. In particular:
+
+A 2x speedup from the naive benchmark to the fastest adjacent/chunks runtime (out of all different number of threads) for v_add.
+A 9x speedup from the naive benchmark to the fastest manual/reduction runtime (out of all different number of threads) for dotp.
+You should make sure your server responds within 100ms for 3 consecutive requests (on the Hive), although the autograder has a more lenient requirement due to its limited CPU power.
+Checkoff
+Please submit your code to the Lab Autograder assignment. Below are some questions to consider:
+
+Part1
+Exercise 2:
+Which version of your code runs faster, chunks or adjacent? What do you think the reason for this is? Explain to the person checking you off.
+Exercise 3:
+Explain the difference in performance as the number of threads changes.
+Part2
+We see the speedup in the time taken to send consecutive requests. However, does our forking scheme increase the actual computation time?
+Previous
+Lab09
+Next
+Lab11
+Objectives:  目标：
+Setup  设置
+Part 1: Multi-threading programming using OpenMP
+第一部分：使用 OpenMP 进行多线程编程
+Exercise 1 - OpenMP Hello World
+练习 1 - OpenMP Hello World
+Exercise 2 - Vector Addition
+练习 2 - 向量加法
+Exercise 3 - Dot Product
+练习 3 - 点积
+Part 2: Intro to multi-processing programming
+第二部分：多进程编程入门
+Background - Http Web Server and Multi-processing
+背景 - HTTP Web 服务器和多进程
+Exercise:  练习：
+Speedup Requirements  加速需求
+Checkoff  检查点
+Part1
+Part2
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.
+Skip to main content
+跳转到主要内容
+🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
+TeachYourselfCS
+TeachYourselfCS
+路线图
+课程资源
+博客
+社区
+捐赠我们
+
+前言
+路线图
+课程资源
+
+cs50x
+
+cs61a
+
+cs61b
+
+cs61c
+
+syllabus-课程大纲
+labs
+Lab0
+  实验 0
+Lab01
+  实验 01
+Lab02
+  实验 02
+Lab03
+  实验 03
+Lab04
+Lab05
+Lab06
+Lab07
+Lab08
+Lab09
+Lab10
+Lab11
+projects
+  项目
+MIT 18.01
+
+MIT 18.02
+
+MIT 18.06
+
+MIT 6.042J
+
+cs162
+
+cs144
+
+CMU 15-445
+
+py4e
+
+课程资源cs61clabsLab11
+Lab 11  实验 11
+Objectives:  目标：
+Get hands-on experience running MapReduce and gain a deeper understanding of the MapReduce paradigm.    
+Become more familiar with Apache Spark and get hands on experience with running Spark on a local installation.    
+Learn how to apply the MapReduce paradigm to Spark by implementing certain problems/algorithms in Spark.    
+Setup  设置
+Pull the lab files from the lab starter repository with    
+
+$ git pull starter master
+
+
+Be aware, this lab is only going to work on Hive machines.    
+
+You will also be working with Spark (in Python!), so you may need to brush up a bit on your Python!!!! To be able to run Spark, you must create a virtual environment using the correct version of Python. This can be done as such:    
+
+$ conda create --name lab11env python=2.7
+
+
+Respond to the prompt to install packages with “y” (with no quotes). You can (and should) ignore any warnings about conda being out of date. These will take about 30 seconds to install. Finally, run the following command to activate the virtual environment:    
+
+$ source activate lab11env
+
+
+This will put you in a virtual environment needed for this lab. Please remember that if you exit the virtual environment and want to return to work on the lab, you must re-run source activate lab11env first for Spark to work.    
+
+In addition, when logged into the Hive machines, run the following command in your Terminal:    
+
+$ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+
+If you do not do this, Spark will throw an error about being unable to find the correct Java version.    
+
+Background Information    
+In lecture we’ve exposed you to cluster computing (in particular, the MapReduce framework), how it is set up and executed, but now it’s time to get some hands-on experience running programs with a cluster computing framework!    
+
+In this lab, we will be introducing you to a cluster computing framework called Spark. Spark was developed right at Berkeley before being donated to the Apache Software Foundation in 2013. We will be writing Python code to run in Spark to give us some practice in writing Map and Reduce routines.    
+
+Spark has its own website, so you are free to try to install it onto your local machines, although it may be easier to ssh into the lab computers to complete this lab.    
+
+Avoid Global Variables    
+When using Spark, avoid using global variables! This defeats the purpose of having multiple tasks running in parallel and creates a bottleneck when multiple tasks try to access the same global variable. As a result, most algorithms will be implemented without the use of global variables.    
+
+Documentation, and Additional Resources    
+A quickstart programming guide for Spark (click the Python tab to see the Python code) is available here!    
+The version of Spark we will be using will be 1.1.0 and the link to the API documentation is available here (Note that the docs likely say a different version, but the API should be compatible).    
+Exercises    
+Note: Different exercises may be solvable or needed to be solved by reconsidering how map(), flat_map() and reduce() are implemented and called and in which order, so keep this in mind when calling whichever you must use.    
+
+The following exercises use sample input files, which can be found in seqFiles/.    
+
+billOfRights.txt.seq – the first 10 Amendments of the US constitution split into separate documents (a very small input)    
+complete-works-mark-twain.txt.seq – The Complete Works of Mark Twain (a medium-sized input)    
+Notice the .seq extension, which signifies a sequence file that is readable by Spark. These are NOT human-readable. Spark supports other input formats, but you will not need to worry about that for this lab.    
+
+The human-readable text file version of each is included in textFiles/ so you can open those to get a sense of the contents of each file.    
+
+Although an exercise may not explicitly ask you to use it, we recommend testing your code on the billOfRights data set first in order to verify correct behavior and help you debug.    
+
+Reminder: this lab will only work on Hive machines and requires you to first activate a python virtual environment, as described above.    
+
+Exercise 0: Generating an Input File for Spark    
+In this lab, we’ll be working heavily with textual data. We have some pre-generated datasets as indicated above, but it’s always more fun to use a dataset that you find interesting. This section of the lab will walk you through generating your own dataset using works from Project Gutenberg (a database of public-domain literary works).    
+
+Step 1: Head over to Project Gutenberg, pick a work of your choosing, and download the “Plain Text UTF–8” version into your lab directory.    
+
+Step 2: Open up the file you downloaded in your favorite text editor and insert —END.OF.DOCUMENT— by itself on a new line wherever you want Spark to split the input file into separate (key, value) pairs. The importer we’re using will assign an arbitrary key (like doc_xyz) and the value will be the contents of our input file between two —END.OF.DOCUMENT— markers. You’ll want to break the work into reasonably-sized chunks, but don’t spend too much time on this part (chapters/sections within a single work or individual works in a body of works are good splitting points).    
+
+Step 3: Now, we’re going to run our Importer to generate a .seq file that we can pass into the Spark programs we’ll write. The importer is actually a MapReduce program, written using Hadoop! You can take a look at Importer.java if you want, but the implementation details aren’t important for this part of the lab. You can generate your input file like so:    
+
+$ make generate-input myinput=YOUR_FILE_FROM_STEP_2.txt
+
+
+Your generated .seq file can now be found in the seqFiles/ directory in your lab directory. When you complete other exercise in this lab, run them on your downloaded file as well and investigate the results.
+
+Exercise 1: Running Word Count
+For this exercise you will use the already-completed wordCount.py. Open the file and take a look. Make sure you understand what the file is attempting to do.
+
+You can run it on the billOfRights text with the following command:
+
+$ spark-submit wordCount.py seqFiles/billOfRights.txt.seq
+
+
+Where spark-submit takes a python file describing a series of map and reduce steps, distributes that files between different worker processors (often across many physical computers, but just across local processors for this lab), and provides the .seq file as an input to that python file.
+
+In this case, the command will run wordCount.py over billOfRights.txt.seq. Your output should be visible in spark-wc-out-wordCount/part-00000.
+
+Next, try your the code on the larger input file complete-works-mark-twain.txt.seq.
+
+$ spark-submit wordCount.py seqFiles/complete-works-mark-twain.txt.seq
+
+
+Your output for this command will be located in the same spark-wc-out-wordCount/part-00000 file (overwriting the previous results). Search through the file for a word like 'the' to get a better understanding of the output.
+
+Exercise 2: How many documents does each word appear in?
+Earlier, we used the —END.OF.DOCUMENT— token to split a text file into multiple documents. The sample files included in this lab are also split into documents. For example, billOfRights.txt is split into 10 documents (one for each amendment). For this exercise we want to count how many documents each word appears in. For example, "Amendment" should appear in all 10 documents of billOfRights.txt.
+
+Open perWordDocumentCount.py. It currently contains code that will execute the same functionality as wordCount.py. Modify it to count the number of documents containing each word rather than the number of times each word occurs in the input and to sort that output in alphabetical order.
+
+To help you with understanding the code, we have added some comments, but you will also need to take a look at the list of Spark transformations for a more detailed explanation of the methods that can be used in Spark. There are methods that you can use to help sort an output or remove duplicate items. To help with distinguishing when a word appears in a document, you will want to make use of the document ID as well – this is mentioned in the comments of flatMapFunc. Just because we gave you an outline doesn’t mean you need to stick to it, feel free to add/remove transformations as you see fit. You’re also encouraged to rename functions to more useful titles.
+
+You can test perWordDocumentCount.py (with results in spark-wc-out-perWordDocumentCount/part-00000) with the following command:
+
+$ spark-submit perWordDocumentCount.py seqFiles/billOfRights.txt.seq
+
+
+You should also try it on the other sequence files you have to look for some interesting results.
+
+Check-off
+Explain your modifications to perWordDocumentCount.py to your TA.
+
+Show your output from billOfRights to the TA. In particular, what values did you get for "Amendment", "the", and "arms"? Do these values make sense? You can confirm your results by looking through the billOfRights.txt file.
+
+Exercise 3: Full Text Index Creation
+Next, for each word and document in which that word appears at least once, we want to generate a list of index into the document for EACH appearance of the word, where an index is defined as the number of words since the beginning of the document (with the first word being index 0). Also make sure the output is sorted alphabetically by the word. Your output should have lines that look like the following (minor line formatting details don’t matter):
+
+(word1  document1-id, word# word# ...)
+(word1  document2-id, word# word# ...)
+. . .
+(word2  document1-id, word# word# ...)
+(word2  document3-id, word# word# ...)
+. . .
+
+
+Notice that there will be a line of output for EACH document in which that word appears and EACH word and document pair should only have ONE list of indices. Remember that you need to also keep track of the document ID as well.
+
+For example, given a document with the text With great power comes great responsibility, the word With appears at index 0 while the word great appears at index 1 and 4, and the output would look like:
+
+('comes doc_somerandomnumbers', 3)
+('great doc_somerandomnumbers', 1 4)
+('power doc_somerandomnumbers', 2)
+('responsibility doc_somerandomnumbers', 5)
+('With doc_somerandomnumbers', 0)
+
+
+The file you should edit to do this task is createIndices.py. For this exercise, you may not need all the functions we have provided. If a function is not used, feel free to remove the method that is trying to call it. Make sure your output for this is sorted as well (just like in the previous exercise).
+
+You can test by running the script with spark-submit:
+
+$ spark-submit createIndices.py seqFiles/billOfRights.txt.seq
+
+
+The results are stored in spark-wc-out-createIndices/part-00000. The output from running this will be a large file. In order to more easily look at its contents, you can use the commands cat, head, more, and grep:
+
+$ head -25 OUTPUTFILE       # view the first 25 lines of output
+$ cat OUTPUTFILE | more     # scroll through output one screen at a time (use Space)
+$ cat OUTPUTFILE | grep the # output only lines containing 'the' (case-sensitive)
+
+
+Make sure to verify your output. Open billOfRights.txt and pick a few words. Manually count a few of their word indices and make sure they all appear in your output file.
+
+Check-off
+Explain your code in createIndices.py to your TA. Next, run:
+
+$ spark-submit createIndices.py seqFiles/complete-works-mark-twain.txt.seq
+
+
+Show your TA the first page of your output for the word “Mark” in complete-works-mark-twain.txt.seq to verify correct output. You can do this by running:
+
+$ cat spark-wc-out-createIndices/part-00000 | grep Mark | less
+
+
+Exercise 4: What’s the most popular word?
+Use Spark to determine what the most popular word is in the Bill of Rights by generating a list of (count, word) tuples in decsending order. We have copied over the code from wordCount.py into a new script mostPopular.py since it is a good starting point.
+
+Hint: After the reduceByKey operation has been run, you can still apply additional map operations to the data. Looking at the arguments for sortByKey may save you a lot of scrolling as well.
+
+To test your code, run:
+
+$ spark-submit mostPopular.py seqFiles/billOfRights.txt.seq
+
+
+The results are stored in spark-wc-out-mostPopular/part-00000. As a fun exercise, try doing this on the book you downloaded in Exercise 0!
+
+Check-off
+Run ./submit in the lab11 folder, then submit your code to the Lab Autograder assignment. Remember to commit the outputs folder!. Below are some questions to consider:
+
+Exercise 2:
+Explain your modifications to perWordDocumentCount.py
+Exercise 3:
+Explain your modifications to createIndices.py
+Exercise 4:
+Explain your code to the TA
+Previous
+Lab10
+Next
+Project1
+Objectives:  目标：
+Setup  设置
+Background Information  背景信息
+Avoid Global Variables  避免使用全局变量
+Documentation, and Additional Resources
+文档，以及其他资源
+Exercises  练习
+Exercise 0: Generating an Input File for Spark
+练习 0：为 Spark 生成输入文件
+Exercise 1: Running Word Count
+练习 1：运行词频统计
+Exercise 2: How many documents does each word appear in?
+练习 2：每个词出现在多少文档中？
+Exercise 3: Full Text Index Creation
+练习 3：全文索引创建
+Exercise 4: What’s the most popular word?
+练习 4：哪个词最流行？
+Check-off  检查清单
+
+CS学习社区
+路线图
+社区
+Discord
+捐赠
+捐赠我们
+Copyleft © 2025 My Project, Inc. Built with Docusaurus.

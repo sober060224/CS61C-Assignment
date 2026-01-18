@@ -8,7 +8,7 @@
 **              Copyright (C) Dan Garcia, 2020. All rights reserved.
 **              Justin Yokota - Starter Code
 **				YOUR NAME HERE
-**
+**				sober060224
 **
 ** DATE:        2020-08-15
 **
@@ -20,22 +20,23 @@
 #include <string.h>
 #include "imageloader.h"
 
-//Opens a .ppm P3 image file, and constructs an Image object. 
-//You may find the function fscanf useful.
-//Make sure that you close the file with fclose before returning.
-Image *readData(char *filename) 
+// Opens a .ppm P3 image file, and constructs an Image object.
+// You may find the function fscanf useful.
+// Make sure that you close the file with fclose before returning.
+Image *readData(char *filename)
 {
-	//YOUR CODE HERE
+	// YOUR CODE HERE
+	FILE *fp = fopen("filename", "r");
 }
 
-//Given an image, prints to stdout (e.g. with printf) a .ppm P3 file with the image's data.
+// Given an image, prints to stdout (e.g. with printf) a .ppm P3 file with the image's data.
 void writeData(Image *image)
 {
-	//YOUR CODE HERE
+	// YOUR CODE HERE
 }
 
-//Frees an image
+// Frees an image
 void freeImage(Image *image)
 {
-	//YOUR CODE HERE
+	// YOUR CODE HERE
 }

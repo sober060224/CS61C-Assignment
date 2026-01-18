@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
 
-typedef struct Color 
+typedef struct Color
 {
 	uint8_t R;
 	uint8_t G;
@@ -15,11 +15,11 @@ typedef struct Image
 	uint32_t cols;
 } Image;
 
-//Loads an image from a ppm file, and converts to an Image object
+// Loads an image from a ppm file, and converts to an Image object
 extern Image *readData(char *filename);
 
-//Writes an image to stdout
+// Writes an image to stdout
 extern void writeData(Image *image);
 
-//Frees an image and all its associated data
+// Frees an image and all its associated data
 extern void freeImage(Image *image);
