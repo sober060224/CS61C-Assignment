@@ -2,7 +2,8 @@
 
 #define MAX_LEN 80
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     char a_word[MAX_LEN];
 
     printf("What's your name?\n");
