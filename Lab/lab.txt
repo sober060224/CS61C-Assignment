@@ -1,64 +1,8 @@
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
 
-前言
-路线图
-课程资源
 
-cs50x
 
-cs61a
 
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
-
-课程资源cs61clabsLab02
 lab 2
 Setup  设置
 To get the starter files for this lab, run the following command in your labs directory.
@@ -260,71 +204,8 @@ Exercise 3: Memory Management
 练习 3：内存管理
 Checkoff  检查点
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab03
 Lab 3
@@ -585,71 +466,8 @@ Transitioning to More Complex RISC-V Programs
 过渡到更复杂的 RISC-V 程序
 Checkoff  检查点
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab04
 Lab 4
@@ -764,71 +582,8 @@ Exercise 2: Write a function without branches
 Action Item
 Checkoff
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab05
 Lab 5  实验五
@@ -1115,71 +870,8 @@ Part 5: Rotate Right
 Testing  测试
 Checkoff  检查点
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab06
 Lab 6  实验六
@@ -1263,71 +955,8 @@ Exercise 3 - Mid Semester Survey
 练习 3 - 学期中调查
 Checkoff  检查点
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab07
 Lab 7  实验 7
@@ -1609,71 +1238,8 @@ Part 2 - Changing Blocksize
 第二部分 - 更改块大小
 Checkoff  检查点
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab08
 Lab08  
@@ -1772,71 +1338,8 @@ Checkpoint  检查点
 Exercise 4 - Bringing it All Together  
 Checkoffs  
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab09
 Lab 9  第九课
@@ -2005,71 +1508,8 @@ Exercise 3 - Loop Unrolling
 Task  任务
 Checkoff  检查点
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61clabsLab10
 Lab 10
@@ -2284,73 +1724,6 @@ Checkoff  检查点
 Part1
 Part2
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
-
-前言
-路线图
-课程资源
-
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-Lab0
-  实验 0
-Lab01
-  实验 01
-Lab02
-  实验 02
-Lab03
-  实验 03
-Lab04
-Lab05
-Lab06
-Lab07
-Lab08
-Lab09
-Lab10
-Lab11
-projects
-  项目
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
-
-课程资源cs61clabsLab11
 Lab 11  实验 11
 Objectives:  目标：
 Get hands-on experience running MapReduce and gain a deeper understanding of the MapReduce paradigm.    
@@ -2556,10 +1929,3 @@ Exercise 4: What’s the most popular word?
 练习 4：哪个词最流行？
 Check-off  检查清单
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.

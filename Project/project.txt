@@ -1,53 +1,4 @@
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
-
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-projects
-  项目
-Project1
-  项目 1
-Project2
-  项目 2
-Project3
-  项目 3
-Project4
-  项目 4
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61cprojectsProject1
 Project 1: Conway's Game of Life, in RGB! (Part A due 9/16, Part B due 9/19)
@@ -409,63 +360,8 @@ Making An Animation  制作动画
 Submitting Your Code  提交你的代码
 Congratulations!  恭喜！
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-projects
-  项目
-Project1
-  项目 1
-Project2
-  项目 2
-Project3
-  项目 3
-Project4
-  项目 4
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61cprojectsProject2
 Project2  
@@ -1142,63 +1038,8 @@ Unit Testing Framework
 Part A  
 Part B  部分 B
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-projects
-  项目
-Project1
-  项目 1
-Project2
-  项目 2
-Project3
-  项目 3
-Project4
-  项目 4
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61cprojectsProject3
 Project 3: CS61CPU    
@@ -1887,63 +1728,8 @@ Gate equivalence
 Longest Path
 Tips
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
-Skip to main content
-跳转到主要内容
-🎉️🎉️🎉️课程文档汉化工作正在进行中 🎉️🎉️ 学习交流群请到 社区页面 查看入群方式 🎉️🎉️🎉️
-TeachYourselfCS
-TeachYourselfCS
-路线图
-课程资源
-博客
-社区
-捐赠我们
 
-前言
-路线图
-课程资源
 
-cs50x
-
-cs61a
-
-cs61b
-
-cs61c
-
-syllabus-课程大纲
-labs
-projects
-  项目
-Project1
-  项目 1
-Project2
-  项目 2
-Project3
-  项目 3
-Project4
-  项目 4
-MIT 18.01
-
-MIT 18.02
-
-MIT 18.06
-
-MIT 6.042J
-
-cs162
-
-cs144
-
-CMU 15-445
-
-py4e
 
 课程资源cs61cprojectsProject4
 Project 4: Numc    
@@ -2653,10 +2439,3 @@ Task 4
 Grading
 Performance Contest
 
-CS学习社区
-路线图
-社区
-Discord
-捐赠
-捐赠我们
-Copyleft © 2025 My Project, Inc. Built with Docusaurus.
