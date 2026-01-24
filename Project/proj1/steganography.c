@@ -22,12 +22,44 @@
 Color *evaluateOnePixel(Image *image, int row, int col)
 {
 	// YOUR CODE HERE
+	Color *new_color = (Color *)malloc(sizeof(Color));
+	if (new_color == NULL)
+		return NULL;
+	new_color->R = image->image[row][col].R, new_color->G = image->image[row][col].G, new_color->B = image->image[row][col].B;
+	return new_color;
 }
 
 // Given an image, creates a new image extracting the LSB of the B channel.
 Image *steganography(Image *image)
 {
 	// YOUR CODE HERE
+	Image *newImage = (Image *)malloc(sizeof(Image));
+	if (newImage == NULL)
+		return NULL;
+	newImage->rows = image->rows, newImage->cols = image->cols;
+	Color **imageColor = (Color **)malloc(sizeof(Color *) * image->rows);
+	if (imageColor == NULL)
+		return NULL;
+	for (int i = 0; i < image->rows; i++)
+	{
+		imageColor[i] = (Color *)malloc(sizeof(Color) * image->cols);
+		if (imageColor[i] == NULL)
+			return NULL;
+	}
+
+	for (int i = 0; i < image->rows; i++)
+	{
+		for (int j = 0; j < image->cols; j++)
+		{
+			if (image->image[i][j].B & 1)
+				imageColor[i][j].R = imageColor[i][j].G = imageColor[i][j].B = 255;
+			else
+				imageColor[i][j].R = imageColor[i][j].G = imageColor[i][j].B = 0;
+		}
+	}
+
+	newImage->image = imageColor;
+	return newImage;
 }
 
 /*
@@ -47,4 +79,14 @@ int main(int argc, char **argv)
 {
 	// YOUR CODE HERE
 	Image *image = readData(argv[1]);
+	if (image == NULL)
+		return -1;
+	Image *secret = steganography(image);
+	if (secret == NULL)
+		return -1;
+	writeData(secret);
+
+	freeImage(secret);
+	freeImage(image);
+	return 0;
 }

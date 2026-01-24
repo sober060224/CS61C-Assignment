@@ -27,23 +27,33 @@ Image *readData(char *filename)
 {
 	// YOUR CODE HERE
 	FILE *fp = fopen(filename, "r");
+	if (fp == NULL)
+		return NULL;
 	char buffer[256];
 
 	fscanf(fp, "%s", buffer);
 
 	Image *imageData = (Image *)malloc(sizeof(Image));
+	if (imageData == NULL)
+		return NULL;
 	fscanf(fp, "%d %d", &imageData->cols, &imageData->rows);
 
 	fscanf(fp, "%s", buffer);
 
-	Color **color = (Color **)malloc(sizeof(Color *) * imageData->rows);
+	Color **imageColor = (Color **)malloc(sizeof(Color *) * imageData->rows);
+	if (imageColor == NULL)
+		return NULL;
 	for (int i = 0; i < imageData->rows; i++)
-		color[i] = (Color *)malloc(sizeof(Color) * imageData->cols);
+	{
+		imageColor[i] = (Color *)malloc(sizeof(Color) * imageData->cols);
+		if (imageColor[i] == NULL)
+			return NULL;
+	}
 
 	for (int i = 0; i < imageData->rows; i++)
 		for (int j = 0; j < imageData->cols; j++)
-			fscanf(fp, "%hhd %hhd %hhd", &color[i][j].R, &color[i][j].G, &color[i][j].B);
-	imageData->image = color;
+			fscanf(fp, "%hhd %hhd %hhd", &imageColor[i][j].R, &imageColor[i][j].G, &imageColor[i][j].B);
+	imageData->image = imageColor;
 
 	fclose(fp);
 	return imageData;
@@ -60,7 +70,7 @@ void writeData(Image *image)
 	{
 		for (int j = 0; j < image->cols; j++)
 		{
-			printf("%hhd %hhd %hhd", image->image[i][j].R, image->image[i][j].G, image->image[i][j].B);
+			printf("%d %d %d", image->image[i][j].R, image->image[i][j].G, image->image[i][j].B);
 			if (j != image->cols - 1)
 				printf("   ");
 		}
