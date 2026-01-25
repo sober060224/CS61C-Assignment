@@ -87,3 +87,42 @@ void freeImage(Image *image)
 	free(image->image);
 	free(image);
 }
+
+int colorToBits(Color *color)
+{
+	int a = color->R, b = color->G, c = color->B;
+	int res = a;
+	int countBit = 8;
+	res <<= countBit;
+	res += b;
+
+	res <<= countBit;
+	res += c;
+
+	return res;
+}
+
+void applyBitsAssist(int *num, int *x)
+{
+	*x = (*num & ((1 << 8) - 1));
+	*num >>= 8;
+}
+
+void applyBitsToColor(int num, Color *color)
+{
+	applyBitsAssist(&num, &color->B);
+	applyBitsAssist(&num, &color->G);
+	color->R = num;
+}
+
+int getBit(int num, int n)
+{
+	if (num & (1 << n))
+		return 1;
+	return 0;
+}
+
+void setBit(int *num, int n, int bit)
+{
+#error "等待实现"
+}

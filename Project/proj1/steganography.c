@@ -22,6 +22,7 @@
 Color *evaluateOnePixel(Image *image, int row, int col)
 {
 	// YOUR CODE HERE
+	row--, col--;
 	Color *new_color = (Color *)malloc(sizeof(Color));
 	if (new_color == NULL)
 		return NULL;
