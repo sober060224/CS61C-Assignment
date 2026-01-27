@@ -79,18 +79,26 @@ Image *life(Image *image, uint32_t rule)
 	// YOUR CODE HERE
 	if (rule != 0x1808)
 		return NULL;
+
 	Image *newImage = (Image *)malloc(sizeof(Image));
 	if (newImage == NULL)
 		return NULL;
 	newImage->rows = image->rows, newImage->cols = image->cols;
+
 	Color **imageColor = (Color **)malloc(sizeof(Color *) * image->rows);
 	if (imageColor == NULL)
 		return NULL;
+
 	for (int i = 0; i < image->rows; i++)
 	{
 		imageColor[i] = (Color *)malloc(sizeof(Color) * image->cols);
 		if (imageColor[i] == NULL)
+		{
+			for (int j = 0; j < i; j++)
+				free(imageColor[j]);
+			free(imageColor);
 			return NULL;
+		}
 	}
 
 	for (int i = 0; i < image->rows; i++)
@@ -136,3 +144,4 @@ int main(int argc, char **argv)
 	freeImage(secret);
 	freeImage(image);
 	return 0;
+}
