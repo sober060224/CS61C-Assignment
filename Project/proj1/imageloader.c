@@ -28,7 +28,12 @@ Image *readData(char *filename)
 	// YOUR CODE HERE
 	FILE *fp = fopen(filename, "r");
 	if (fp == NULL)
-		return NULL;
+	{
+		printf("usage: ./gameOfLife filename rule\n"
+			   "filename is an ASCII PPM file (type P3) with maximum value 255.\n"
+			   "rule is a hex number beginning with 0x; Life is 0x1808.\n");
+		exit(-1);
+	}
 	char buffer[256];
 
 	fscanf(fp, "%s", buffer);
@@ -47,7 +52,11 @@ Image *readData(char *filename)
 	{
 		imageColor[i] = (Color *)malloc(sizeof(Color) * imageData->cols);
 		if (imageColor[i] == NULL)
+		{
+			for (int j = 0; j < i; j++)
+				free(imageColor[j]);
 			return NULL;
+		}
 	}
 
 	for (int i = 0; i < imageData->rows; i++)
@@ -102,7 +111,7 @@ int colorToBits(Color *color)
 	return res;
 }
 
-void applyBitsAssist(int *num, int *x)
+void applyBitsAssist(int *num, uint8_t *x)
 {
 	*x = (*num & ((1 << 8) - 1));
 	*num >>= 8;
@@ -124,5 +133,7 @@ int getBit(int num, int n)
 
 void setBit(int *num, int n, int bit)
 {
-#error "等待实现"
+	*num &= ~(1 << n);
+	if (bit)
+		*num ^= (1 << n);
 }

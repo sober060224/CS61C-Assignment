@@ -22,7 +22,6 @@
 Color *evaluateOnePixel(Image *image, int row, int col)
 {
 	// YOUR CODE HERE
-	row--, col--;
 	Color *new_color = (Color *)malloc(sizeof(Color));
 	if (new_color == NULL)
 		return NULL;
@@ -45,7 +44,11 @@ Image *steganography(Image *image)
 	{
 		imageColor[i] = (Color *)malloc(sizeof(Color) * image->cols);
 		if (imageColor[i] == NULL)
+		{
+			for (int j = 0; j < i; j++)
+				free(imageColor[j]);
 			return NULL;
+		}
 	}
 
 	for (int i = 0; i < image->rows; i++)

@@ -34,7 +34,7 @@ Color *evaluateOneCell(Image *image, int row, int col, uint32_t rule)
 	// 类似地，任何死亡细胞，如果具有三个存活邻居，则会在下一代复活为存活细胞。
 	// 所有其他存活细胞将在下一代死亡，而所有其他死亡细胞会保持不活跃状态。
 
-	int mixBit = colorToBits(color);
+	int encodeBits = colorToBits(color);
 
 	// 判断指定位置色素下一代状态
 	// 每个位比特
@@ -42,33 +42,39 @@ Color *evaluateOneCell(Image *image, int row, int col, uint32_t rule)
 	{
 		int sum = 0;
 		// 当前位存活下一代可能死亡
-		if (getBit(mixBit, i))
-			setBit(&mixBit, i, 0);
+		if (getBit(encodeBits, i))
+			setBit(&encodeBits, i, 0);
 
 		// 每个颜色（单元格）
 		for (int j = 0; j < 8; j++)
 		{
 			// 最左和最右，最上和最下互通
 			int newRow = (row + dx[j] + image->rows) % image->rows, newCol = (col + dy[j] + image->cols) % image->cols;
-			Color adjColor = image->image[newRow][newCol];
-			int mixNewBit = colorToBits(&adjColor);
+			Color adjColor = image->image[newRow][newCol]; // 邻居颜色
+			int encodeAdjBits = colorToBits(&adjColor);
 			// 每个细胞是每个颜色像素的每个位比特
 			// 拿每个像素的每个位比特
 
 			// 颜色邻居位是活的
-			if (getBit(mixNewBit, i))
+			if (getBit(encodeAdjBits, i))
 				sum++;
 		}
 
 		// 存活
-		if (getBit(mixBit, i) && (sum == 2 || sum == 3))
-			setBit(&mixBit, i, 1);
+		if (getBit(encodeBits, i) && (rule >> (9 + sum)))
+			setBit(&encodeBits, i, 1);
 		// 复活
-		if (!getBit(mixBit, i) && sum == 3)
-			setBit(&mixBit, i, 1);
+		if (!getBit(encodeBits, i) && (rule >> sum))
+			setBit(&encodeBits, i, 1);
+		// // 存活
+		// if (getBit(mixBit, i) && (sum == 2 || sum == 3))
+		// 	setBit(&mixBit, i, 1);
+		// // 复活
+		// if (!getBit(mixBit, i) && sum == 3)
+		// 	setBit(&mixBit, i, 1);
 	}
 
-	applyBitsToColor(mixBit, color);
+	applyBitsToColor(encodeBits, color);
 	return color;
 }
 
@@ -77,9 +83,6 @@ Color *evaluateOneCell(Image *image, int row, int col, uint32_t rule)
 Image *life(Image *image, uint32_t rule)
 {
 	// YOUR CODE HERE
-	if (rule != 0x1808)
-		return NULL;
-
 	Image *newImage = (Image *)malloc(sizeof(Image));
 	if (newImage == NULL)
 		return NULL;
@@ -133,10 +136,30 @@ You may find it useful to copy the code from steganography.c, to start.
 int main(int argc, char **argv)
 {
 	// YOUR CODE HERE
+	if (argc <= 2)
+	{
+		printf("usage: ./gameOfLife filename rule\n"
+			   "filename is an ASCII PPM file (type P3) with maximum value 255.\n"
+			   "rule is a hex number beginning with 0x; Life is 0x1808.\n");
+		exit(-1);
+	}
+
 	Image *image = readData(argv[1]);
 	if (image == NULL)
 		return -1;
-	Image *secret = life(image, argv[2]);
+	uint32_t rule = 0;
+
+	char *endptr;
+	rule = strtol(argv[2], endptr, 16);
+	if (rule != '\0' || rule < 0x0 || rule > 0x3FFFF)
+	{
+		printf("usage: ./gameOfLife filename rule\n"
+			   "filename is an ASCII PPM file (type P3) with maximum value 255.\n"
+			   "rule is a hex number beginning with 0x; Life is 0x1808.\n");
+		exit(-1);
+	}
+
+	Image *secret = life(image, rule);
 	if (secret == NULL)
 		return -1;
 	writeData(secret);
